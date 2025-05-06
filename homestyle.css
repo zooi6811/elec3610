@@ -1,0 +1,354 @@
+/* --- Basic Reset & Body Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0ebe5; /* Fallback */
+    /* Add the wood slat background image here */
+    background-image: url('images/bg1.png');
+    background-size: contain; /* Adjust as needed: 'cover', 'auto', etc. */
+    background-repeat: repeat; /* Or 'repeat-y' if it only tiles vertically */
+    background-attachment: fixed; /* Keeps background static during scroll */
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* --- Header Styles (Reused, Active link updated) --- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque white/off-white */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.4em;
+    color: #5c554e;
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #7a736a;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent; /* Add space for border */
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: #333;
+    border-bottom: 2px solid #8b7d6b;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.search-container input[type="search"] {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 5px;
+    font-size: 0.9em;
+}
+
+.search-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    padding-left: 5px;
+}
+
+/* --- Main Page Content & Grid Layout --- */
+.page-content {
+    padding: 40px 5%; /* Add padding around the grid */
+}
+
+.grid-container {
+    display: grid;
+    max-width: 1100px; /* Adjust overall width */
+    margin: 20px auto;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-rows: auto auto; /* Rows adjust to content */
+    gap: 25px; /* Space between grid items */
+    grid-template-areas:
+        "hero hero"
+        "how-works community-stack"; /* Define areas */
+}
+
+/* --- Block Styles --- */
+section {
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Block */
+.hero-block {
+    grid-area: hero;
+    background-color: #f8f5f1; /* Light beige */
+    color: #4a4035;
+}
+
+.hero-block h1 {
+    font-size: 2.8em; /* Adjust size */
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.hero-block p {
+    font-size: 1em;
+    margin-bottom: 25px;
+    max-width: 500px; /* Limit paragraph width */
+    color: #7a736a;
+}
+
+.hero-block .tags {
+    margin-bottom: 25px;
+}
+
+.hero-block .tags span {
+    display: inline-block;
+    border: 1px solid #d3c9bc;
+    color: #8b7d6b;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+.hero-block .learn-more {
+    font-weight: 600;
+    color: #4a4035;
+    font-size: 0.9em;
+}
+.hero-block .learn-more:hover {
+    text-decoration: underline;
+}
+
+
+/* How it Works Block */
+.how-it-works-block {
+    grid-area: how-works;
+    background-color: #4a4035; /* Dark brown */
+    color: #f0ebe5; /* Light text */
+}
+
+.how-it-works-block h3 {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.how-it-works-block ol {
+    list-style: none; /* Remove default numbers if using custom */
+    padding-left: 0; /* Remove default padding */
+}
+
+.how-it-works-block ol li {
+    margin-bottom: 15px;
+    font-size: 1em;
+    position: relative;
+    padding-left: 35px; /* Space for custom number */
+}
+/* Custom list numbers */
+.how-it-works-block ol li::before {
+     content: counter(list-item);
+     counter-increment: list-item;
+     position: absolute;
+     left: 0;
+     top: -2px;
+     background-color: rgba(255, 255, 255, 0.2); /* Circle background */
+     color: #fff;
+     width: 24px;
+     height: 24px;
+     border-radius: 50%;
+     display: inline-block;
+     text-align: center;
+     font-size: 0.85em;
+     line-height: 24px; /* Center number vertically */
+     font-weight: 500;
+}
+
+
+/* Right Column Stack (Start Designing & Community) */
+/* We need a wrapper for the right column if using areas like this,
+   or adjust grid definition. Let's stack them using a subgrid or flow.
+   Alternative: Define more grid rows/areas. Let's try that.
+*/
+.grid-container {
+    /* Redefine grid */
+     grid-template-columns: 1fr 1fr;
+     grid-template-rows: auto auto auto; /* Adjust rows */
+     gap: 25px;
+     grid-template-areas:
+         "hero hero"
+         "how-works start-designing"
+         "how-works community"; /* Adjust areas */
+}
+
+/* Start Designing Block */
+.start-designing-block {
+    grid-area: start-designing;
+    background-color: #4a4035; /* Dark brown */
+    color: #f0ebe5; /* Light text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Ensure text centers if wrapping */
+}
+
+.start-designing-block a {
+    font-size: 1.5em; /* Larger text */
+    font-weight: 600;
+    padding: 20px; /* Make it feel like a button */
+}
+.start-designing-block a:hover {
+    opacity: 0.9;
+}
+
+
+/* Community Block */
+.community-block {
+    grid-area: community;
+    background-color: #4a4035; /* Dark brown */
+    color: #f0ebe5; /* Light text */
+    display: flex; /* Use flex to position text and image */
+    align-items: stretch; /* Make items full height */
+    padding: 0; /* Remove section padding, apply to children */
+    overflow: hidden; /* Clip image corners */
+}
+
+.community-content {
+    padding: 30px;
+    flex-basis: 60%; /* Text takes more space */
+}
+
+.community-block h4 {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.community-block p {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    color: rgba(240, 235, 229, 0.8); /* Slightly muted light text */
+}
+
+.community-block a {
+    font-weight: 600;
+    font-size: 0.9em;
+}
+.community-block a:hover {
+     text-decoration: underline;
+}
+
+.community-image {
+    flex-basis: 40%; /* Image takes less space */
+    position: relative; /* For potential overlay effects */
+}
+
+.community-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, might crop */
+    display: block;
+}
+
+
+/* --- Footer Styles (Reused) --- */
+.site-footer {
+    background-color: #e0d9d0;
+    padding: 20px 5%;
+    margin-top: 40px;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-nav ul li a {
+    font-size: 0.8em;
+    color: #7a736a;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #333;
+}
+
+/* --- Optional: Small screen adjustments (Example) --- */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Stack everything in one column */
+        grid-template-rows: auto; /* Let rows size automatically */
+        grid-template-areas: /* Redefine areas for single column */
+            "hero"
+            "start-designing" /* Change order if desired */
+            "how-works"
+            "community";
+    }
+
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .main-nav ul {
+        margin-top: 10px;
+        margin-left: -30px; /* Adjust alignment */
+    }
+    .search-container {
+        margin-top: 10px;
+        width: 100%;
+    }
+     .community-block {
+        flex-direction: column; /* Stack text and image */
+    }
+    .community-image {
+        min-height: 200px; /* Give image some height */
+    }
+
+}

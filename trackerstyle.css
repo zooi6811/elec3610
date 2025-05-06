@@ -1,0 +1,272 @@
+/* Basic Reset & Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0ebe5; /* Fallback background */
+    /* A subtle gradient similar to the image */
+    /* background: linear-gradient(to bottom, #fdfbf9, #e7e2dc); */
+    background-image: url("images/bg2.png");
+    color: #4a4a4a; /* Default text color */
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Header Styles */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(240, 235, 229, 0.8); /* Slightly transparent beige */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-family: 'Now', sans-serif;
+    font-weight: 150;
+    font-size: 1em;
+    letter-spacing: 1.5mm;
+    color: #5c554e;
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #7a736a;
+    padding: 5px 0;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: #333;
+    border-bottom: 2px solid #8b7d6b; /* Accent color for active link */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.search-container input[type="search"] {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 5px;
+    font-size: 0.9em;
+}
+
+.search-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    padding-left: 5px;
+}
+
+/* Main Content Area */
+.content-area {
+    max-width: 900px; /* Adjust max-width as needed */
+    margin: 40px auto;
+    padding: 40px;
+    background: linear-gradient(to bottom, rgba(231, 226, 220, 0.7), rgba(216, 209, 201, 0.9)); /* Inner gradient */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.order-details .order-id {
+    display: inline-block;
+    background-color: #d3c9bc;
+    color: #6b5f51;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.order-details h1 {
+    font-size: 2.8em;
+    font-weight: 600;
+    color: #4a4035;
+    margin-bottom: 5px;
+}
+
+.order-details h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #6b5f51;
+    margin-bottom: 10px;
+}
+
+.order-details .description {
+    font-size: 0.9em;
+    color: #8b7d6b;
+    margin-bottom: 20px;
+}
+
+
+.order-details .delivery-label {
+    font-size: 0.9em;
+    color: #8b7d6b;
+    margin-bottom: 2px;
+}
+
+.order-details .delivery-date {
+    font-size: 1.4em;
+    font-weight: 500;
+    color: #4a4035;
+    margin-bottom: 30px;
+}
+
+/* Main Image */
+.main-image-container {
+    margin-bottom: 40px;
+}
+
+.main-image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 25px; /* Rounded corners for the image */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    display: block; /* Prevents extra space below image */
+    margin: 0 auto; /* Center image if container is wider */
+}
+
+/* Progress Tracker */
+.progress-tracker {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Space between steps */
+    margin-bottom: 40px;
+}
+
+.progress-tracker .step {
+    flex: 1; /* Each step takes equal space */
+    background-color: rgba(255, 255, 255, 0.4); /* Default, less opaque */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px; /* Ensure consistent height */
+    transition: background-color 0.3s ease;
+}
+
+.progress-tracker .step.completed,
+.progress-tracker .step.active {
+    background-color: rgba(255, 255, 255, 0.7); /* More opaque for completed/active */
+}
+
+.progress-tracker .step.active {
+     box-shadow: 0 0 10px rgba(139, 125, 107, 0.3); /* Subtle glow for active step */
+}
+
+
+.progress-tracker .step-label {
+    font-size: 0.8em;
+    color: #8b7d6b;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.progress-tracker .step-name {
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #5c554e;
+}
+
+/* Help Section */
+.help-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px; /* Add some space above */
+    padding: 15px;
+    background-color: rgba(211, 201, 188, 0.5); /* Subtle background */
+    border-radius: 10px;
+}
+
+.help-section span {
+    font-size: 0.95em;
+    color: #6b5f51;
+}
+
+.help-button {
+    background-color: #fff;
+    color: #6b5f51;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+    border: 1px solid #d3c9bc;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.help-button:hover {
+    background-color: #8b7d6b;
+    color: #fff;
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: #e0d9d0; /* Light grey/beige footer */
+    padding: 20px 5%;
+    margin-top: 40px; /* Space above footer */
+    text-align: center;
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 25px; /* Space between links */
+}
+
+.footer-nav ul li a {
+    font-size: 0.8em;
+    color: #7a736a;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #333;
+}
+
+@font-face {
+    font-family: 'Now'; /* Give your font a name */
+    src: url('fonts/now.medium.otf') format('woff2'); /* Path to your font file and format */
+    font-weight: normal; /* Or specify the weight if it's a specific weight file */
+    font-style: normal;  /* Or specify the style (e.g., italic) */
+    /* Add other descriptors like font-display if needed */
+}
