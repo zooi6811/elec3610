@@ -1,86 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ardor & Ash - Homepage</title>
-    <link rel="stylesheet" href="homestyle.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ardor & Ash - Homepage</title>
+  <link rel="stylesheet" href="homestyle.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
 </head>
 <body>
+  <header class="site-header">
+    <div class="logo">ARDOR & ASH</div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="home.html" class="active">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="product.html">PRODUCT</a></li>
+        <li><a href="tracker.html">TRACK</a></li>
+      </ul>
+    </nav>
+    <div class="search-container">
+      <input type="search" placeholder="Search" />
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
+  </header>
 
-    <header class="site-header">
-        <div class="logo">ARDOR & ASH</div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="home.html" class="active">HOME</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="product.html">PRODUCT</a></li>
-                <li><a href="tracker.html">TRACK</a></li>
-            </ul>
-        </nav>
-        <div class="search-container">
-            <input type="search" placeholder="Search">
-            <button type="submit"><i class="fas fa-search"></i></button>
+  <main class="page-content">
+    <div class="grid-container">
+      <!-- your existing sections… -->
+      <section class="hero-block">
+        <h1>Your Design,<br />Our Craftsman.</h1>
+        <p>
+          Whether you love modern minimalism, timeless classics, or bold
+          statement pieces.
+        </p>
+        <div class="tags">
+          <span>HIGH QUALITY</span>
+          <span>PREMIUM DESIGN</span>
+          <span>VERSATILE</span>
         </div>
-    </header>
+        <a href="#" class="learn-more">LEARN MORE &gt;</a>
+      </section>
 
-    <main class="page-content">
-        <div class="grid-container">
+      <section class="how-it-works-block">
+        <h3>How does it work?</h3>
+        <ol>
+          <li>Have an idea</li>
+          <li>Design your idea</li>
+          <li>Let us handle the rest!</li>
+        </ol>
+      </section>
 
-            <section class="hero-block">
-                <h1>Your Design,<br>Our Craftsman.</h1>
-                <p>Whether you love modern minimalism, timeless classics, or bold statement pieces.</p>
-                <div class="tags">
-                    <span>HIGH QUALITY</span>
-                    <span>PREMIUM DESIGN</span>
-                    <span>VERSATILE</span>
-                </div>
-                <a href="#" class="learn-more">LEARN MORE &gt;</a>
-            </section>
+      <section class="start-designing-block">
+        <a href="#">START DESIGNING &gt;</a>
+      </section>
 
-            <section class="how-it-works-block">
-                <h3>How does it work?</h3>
-                <ol>
-                    <li>Have an idea</li>
-                    <li>Design your idea</li>
-                    <li>Let us handle the rest!</li>
-                </ol>
-            </section>
-
-            <section class="start-designing-block">
-                <a href="#">START DESIGNING &gt;</a>
-            </section>
-
-            <section class="community-block">
-                 <div class="community-content">
-                    <h4>Join our community of enthusiasts.</h4>
-                    <p>Tailor-made pieces to fit your style. Check out Christy's new custom chair!</p>
-                    <a href="#">HAVE A LOOK &gt;</a>
-                </div>
-                 <div class="community-image">
-                     <img src="images/eggChair.png" alt="Curved wood detail">
-                 </div>
-            </section>
-
+      <section class="community-block">
+        <div class="community-content">
+          <h4>Join our community of enthusiasts.</h4>
+          <p>
+            Tailor-made pieces to fit your style. Check out Christy's new
+            custom chair!
+          </p>
+          <a href="#">HAVE A LOOK &gt;</a>
         </div>
-    </main>
+        <div class="community-image">
+          <img src="images/eggChair.png" alt="Curved wood detail" />
+        </div>
+      </section>
+    </div>
+  </main>
 
-    <footer class="site-footer">
-        <nav class="footer-nav">
-            <ul>
-                <li><a href="#">CONTACT US</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">WARRANTY</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">TERMS OF SERVICE</a></li>
-                <li><a href="#">SUSTAINABILITY POLICY</a></li>
-            </ul>
-        </nav>
-    </footer>
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <ul>
+        <li><a href="#">CONTACT US</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">WARRANTY</a></li>
+        <li><a href="faq.html" class="active">FAQ</a></li>
+        <li><a href="#">TERMS OF SERVICE</a></li>
+        <li><a href="#">SUSTAINABILITY POLICY</a></li>
+      </ul>
+    </nav>
+  </footer>
 
+  <!-- Chatbot widget -->
+  <div class="chatbot-container">
+    <div class="chatbot-icon" id="chatToggle">
+      <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div class="chatbot-window hidden" id="chatWindow">
+      <div class="chatbot-header">
+        <span>How can we help?</span>
+        <div class="chatbot-header-buttons">
+          <button id="chatReset" title="Restart chat"><i class="fas fa-undo"></i></button>
+          <button id="chatClose" title="Close chat">&times;</button>
+        </div>
+      </div>
+      <div class="chatbot-messages" id="chatMessages"></div>
+      <div class="chatbot-input-area">
+        <input type="text" id="chatInput" placeholder="type your question…" />
+        <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatClose  = document.getElementById('chatClose');
+    const chatReset  = document.getElementById('chatReset');
+    const chatMsgs   = document.getElementById('chatMessages');
+    const chatInput  = document.getElementById('chatInput');
+    const chatSend   = document.getElementById('chatSend');
+  
+    let customStep = 0;
+    const customData = {};
+  
+    // Initial menu HTML
+    const initialMenu = `
+      <div class="bot-message">
+        Hi there! 👋<br>
+        What can I help you with today?<br /><br />
+        <button class="chat-option" data-action="customize">Customize Product</button>
+        <button class="chat-option" data-action="track">Track Order</button>
+        <button class="chat-option" data-action="faq">FAQ</button>
+      </div>
+    `;
+  
+    function appendMessage(html, cls = 'bot-message') {
+      const el = document.createElement('div');
+      el.className = cls;
+      el.innerHTML = html;
+      chatMsgs.appendChild(el);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+  
+    function renderOptions(prompt, options) {
+      appendMessage(prompt);
+      const container = document.createElement('div');
+      container.className = 'bot-message';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'chat-option';
+        btn.textContent = opt.label;
+        btn.dataset.action = opt.action;
+        container.appendChild(btn);
+      });
+      chatMsgs.appendChild(container);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+  
+    function resetChat() {
+      chatMsgs.innerHTML = initialMenu;
+      customStep = 0;
+      for (let k in customData) delete customData[k];
+    }
+  
+    // Toggle, close, reset, init
+    chatToggle.onclick = () => {
+      chatWindow.classList.toggle('hidden');
+      if (!chatWindow.classList.contains('hidden') && !chatMsgs.hasChildNodes()) resetChat();
+    };
+    chatClose.onclick = () => chatWindow.classList.add('hidden');
+    chatReset.onclick = resetChat;
+    document.addEventListener('DOMContentLoaded', resetChat);
+  
+    // Handle button-driven flows
+    chatMsgs.addEventListener('click', e => {
+      if (!e.target.classList.contains('chat-option')) return;
+      e.target.closest('.bot-message').remove();
+      const action = e.target.dataset.action;
+  
+      if (action === 'customize') {
+        customStep = 1;
+        renderOptions('Great! What type of product would you like to customize?', [
+          { label: 'Chair',   action: 'type:chair' },
+          { label: 'Table',   action: 'type:table' },
+          { label: 'Bench',   action: 'type:bench' },
+          { label: 'Cabinet', action: 'type:cabinet' }
+        ]);
+        return;
+      }
+      if (action.startsWith('type:')) {
+        customData.type = action.split(':')[1];
+        customStep = 2;
+        renderOptions(`You chose a <strong>${customData.type}</strong>. Which style?`, [
+          { label: 'Modern',  action: 'style:modern' },
+          { label: 'Classic', action: 'style:classic' },
+          { label: 'Rustic',  action: 'style:rustic' }
+        ]);
+        return;
+      }
+      if (action.startsWith('style:')) {
+        customData.style = action.split(':')[1];
+        customStep = 3;
+        renderOptions(`Awesome! A <strong>${customData.style}</strong> style. Pick a material:`, [
+          { label: 'Oak',    action: 'material:oak' },
+          { label: 'Walnut', action: 'material:walnut' },
+          { label: 'Pine',   action: 'material:pine' }
+        ]);
+        return;
+      }
+      if (action.startsWith('material:')) {
+        customData.material = action.split(':')[1];
+        customStep = 0;
+        appendMessage(
+          `✔️ You’ve customized a <strong>${customData.style}</strong> ` +
+          `<strong>${customData.type}</strong> in <strong>${customData.material}</strong>.<br>` +
+          `Our design team will reach out soon.`
+        );
+        // after flow, allow free-text again
+        return;
+      }
+      if (action === 'track') {
+        appendMessage(
+          'Please visit our <a href="tracker.html">Track Order</a> page to check your status.'
+        );
+        return;
+      }
+      if (action === 'faq') {
+        return window.location.href = 'faq.html';
+      }
+    });
+  
+    // Free-text handler with intents
+    function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      appendMessage(text, 'user-message');
+      chatInput.value = '';
+  
+      // If in custom flow but they type free-text, ignore here
+      if (customStep) {
+        appendMessage('Please pick an option above to continue customization, or click Reset.');
+        return;
+      }
+  
+      const lower = text.toLowerCase();
+  
+      if (/\bfaq\b/.test(lower)) {
+        return window.location.href = 'faq.html';
+      }
+      if (/\b(where.*order|track.*order|order.*status|order)\b/.test(lower)) {
+        appendMessage(
+          'To check your order status, please visit our <a href="tracker.html">Track Order</a> page.'
+        );
+        return;
+      }
+      if (/\b(return|exchange)\b/.test(lower)) {
+        appendMessage(
+          "Since each piece is custom-made, we don't offer returns—unless it's defective, which we'll repair or replace under warranty."
+        );
+        return;
+      }
+      if (/\b(material|wood|timber)\b/.test(lower)) {
+        appendMessage(
+          'We use responsibly sourced and recycled timbers—oak, walnut, pine. You can select your favorite in our design tool.'
+        );
+        return;
+      }
+      if (/\b(delivery time|how long|lead time)\b/.test(lower)) {
+        appendMessage(
+          'Our standard delivery window is 4–6 weeks after order confirmation; custom designs may take up to 8 weeks.'
+        );
+        return;
+      }
+      if (/\b(agent|person|support|human|live)\b/.test(lower)) {
+        appendMessage(
+          'Connecting you to one of our agents now—please hold on a moment!'
+        );
+        return;
+      }
+      if (/\b(hi|hello|hey|how are you)\b/.test(lower)) {
+        appendMessage(
+          "Hello! I'm here to help—choose an option above or type a request."
+        );
+        return;
+      }
+  
+      // final fallback
+      appendMessage(
+        'I’m not sure about that. Try Reset or choose an option above to get started.'
+      );
+    }
+  
+    chatSend.onclick = sendMessage;
+    chatInput.onkeydown = e => { if (e.key === 'Enter') sendMessage(); };
+  </script>
+  
 </body>
 </html>
