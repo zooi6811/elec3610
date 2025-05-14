@@ -17,7 +17,7 @@
     <nav class="main-nav">
       <ul>
         <li><a href="home.html">HOME</a></li>
-        <li><a href="#">ABOUT</a></li>
+        <li><a href="faq.html">FAQ</a></li>
         <li><a href="product.html">PRODUCT</a></li>
         <li><a href="tracker.html" class="active">TRACK</a></li>
         <li><a href="socials.html">SOCIALS</a></li>
@@ -30,37 +30,34 @@
   </header>
 
   <main class="content-area">
+
     <div class="order-details">
-      <!-- hidden on load, revealed on Track -->
       <span class="order-id hidden">#WE20204</span>
-      <h1>Crafting Memories.</h1>
-      <h2>Custom Chair</h2>
+      <h1>Let's check on your order.</h1> 
+      <h2 class="hidden">Custom Chair</h2>
       <p class="description">Sustainable Solutions for a Beautiful Planet</p>
-      <p class="delivery-label">Est. Delivery Date</p>
-      <p class="delivery-date">2<sup>nd</sup> March 2026</p>
+      <p class="delivery-label hidden">Est. Delivery Date</p>
+      <p class="delivery-date hidden">2<sup>nd</sup> March 2026</p>
     </div>
 
-    <div class="main-image-container">
-      <img src="crafting.jpg" alt="Craftsman working on a wooden chair detail">
+    <div class="main-image-container hidden">
+      <img src="images/crafting.jpg" alt="Craftsman working on a wooden chair detail">
     </div>
 
-    <!-- tracker pill + button -->
     <div class="order-tracker-form-wrapper">
-      <label for="orderId" class="order-tracker-label">Enter Order ID</label>
+      <label for="orderId" class="order-tracker-label">What's your order ID?</label>
       <div class="order-tracker-form search-container">
         <form id="trackForm">
           <input
             type="text"
             id="orderId"
             value="#WE20204"
-            readonly
           />
           <button type="submit">Track</button>
         </form>
       </div>
     </div>
 
-    <!-- step-names always visible; labels hidden until Track -->
     <div class="progress-tracker">
       <div class="step">
         <span class="step-label hidden"></span>
@@ -84,6 +81,10 @@
       <span>Got a question?</span>
       <a href="#" class="help-button">LET US HELP!</a>
     </div>
+
+    <div class="back-button-container hidden">
+      <button id="backButton" class="back-button">BACK TO TRACKING</button>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -100,22 +101,60 @@
   </footer>
 
   <script>
+    // Function to reset the page to its initial state
+    function resetPage() {
+        // Hide elements shown after tracking
+        document.querySelector('.main-image-container').classList.add('hidden');
+        document.querySelector('.order-details h2').classList.add('hidden');
+        document.querySelector('.order-details .delivery-label').classList.add('hidden');
+        document.querySelector('.order-details .delivery-date').classList.add('hidden');
+        document.querySelector('.order-details .order-id').classList.add('hidden');
+
+        // Show the order tracking form wrapper
+        document.querySelector('.order-tracker-form-wrapper').classList.remove('hidden');
+
+        // Reset the main title
+        document.querySelector('.order-details h1').textContent = "Let's check on your order.";
+
+        // Hide the Back button container
+        document.querySelector('.back-button-container').classList.add('hidden');
+
+        // Reset the progress tracker steps
+        document.querySelectorAll('.progress-tracker .step').forEach((el) => {
+            el.classList.remove('completed');
+            el.classList.remove('active');
+            el.querySelector('.step-label').classList.add('hidden');
+        });
+
+        // Reset the content area margin
+        const contentArea = document.querySelector('.content-area');
+        if (contentArea) {
+            contentArea.style.marginTop = '150px'; // Reset to original value
+            contentArea.style.marginBottom = '150px'; // Reset to original value
+        }
+
+        // Optional: Clear the input field
+        document.getElementById('orderId').value = '#WE20204'; // Reset to default value
+    }
+
+
+    // Event listener for the Track button
     document.getElementById('trackForm').addEventListener('submit', e => {
       e.preventDefault();
 
       // 1) Read the order ID (strip leading '#')
       const raw = document.getElementById('orderId')
-                        .value
-                        .trim()
-                        .replace(/^#/, '');
+                  .value
+                  .trim()
+                  .replace(/^#/, '');
 
       // 2) In-page “database” of statuses & labels
       const orders = {
         WE20204: {
           status: 'CRAFTING',
           steps: [
-            { label: '13th Feb 2026',     name: 'Order Confirmed' },
-            { label: 'In Progress',       name: 'Crafting' },
+            { label: '13th Feb 2026',    name: 'Order Confirmed' },
+            { label: 'In Progress',      name: 'Crafting' },
             { label: 'Starting 24th Feb', name: 'Quality Check' },
             { label: 'Starting 2nd Mar',  name: 'Delivered' }
           ]
@@ -125,8 +164,59 @@
 
       const order = orders[raw];
       if (!order) {
+        // If order not found, just alert and don't change the display
         return alert('No data for Order ID ' + raw);
       }
+
+      // --- Show the image and other hidden elements ---
+      const imageContainer = document.querySelector('.main-image-container');
+      if (imageContainer) {
+          imageContainer.classList.remove('hidden');
+      }
+
+      const productNameEl = document.querySelector('.order-details h2');
+      if (productNameEl) {
+          productNameEl.classList.remove('hidden');
+      }
+
+      const deliveryLabelEl = document.querySelector('.order-details .delivery-label');
+      if (deliveryLabelEl) {
+          deliveryLabelEl.classList.remove('hidden');
+      }
+
+      const deliveryDateEl = document.querySelector('.order-details .delivery-date');
+      if (deliveryDateEl) {
+          deliveryDateEl.classList.remove('hidden');
+      }
+      // ------------------------------------------------
+
+      // --- Change the margin of the content area ---
+      const contentArea = document.querySelector('.content-area');
+      if (contentArea) {
+          contentArea.style.marginTop = '40px';
+          contentArea.style.marginBottom = '40px';
+      }
+
+      const siteFooter = document.querySelector('.site-footer');
+      if (siteFooter) {
+          siteFooter.style.marginTop = '40px';
+      }
+      // ---------------------------------------------
+
+      // --- Hide the order tracking form wrapper ---
+      const trackFormWrapper = document.querySelector('.order-tracker-form-wrapper');
+      if (trackFormWrapper) {
+          trackFormWrapper.classList.add('hidden');
+      }
+      // ------------------------------------------
+
+      // --- Show the Back button container ---
+      const backButtonContainer = document.querySelector('.back-button-container');
+      if (backButtonContainer) {
+          backButtonContainer.classList.remove('hidden');
+      }
+      // ------------------------------------
+
 
       // 3) Reveal the on-page order-id pill
       const orderIdEl = document.querySelector('.order-details .order-id');
@@ -140,12 +230,20 @@
       document.querySelectorAll('.progress-tracker .step').forEach((el, i) => {
         const lbl = el.querySelector('.step-label');
         lbl.textContent = order.steps[i].label;
-        lbl.classList.remove('hidden');        // now show date/status
+        lbl.classList.remove('hidden');         // now show date/status
 
         el.classList.toggle('completed', i < idx);
-        el.classList.toggle('active',    i === idx);
+        el.classList.toggle('active',     i === idx);
       });
+
+      // Change the main title to "Crafting Memories." or similar after tracking
+      document.querySelector('.order-details h1').textContent = 'Crafting Memories.';
+
     });
+
+    // Event listener for the Back button
+    document.getElementById('backButton').addEventListener('click', resetPage);
+
   </script>
 </body>
 </html>

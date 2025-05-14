@@ -97,7 +97,7 @@ ul {
 /* Main Content Area */
 .content-area {
     max-width: 900px; /* Adjust max-width as needed */
-    margin: 40px auto;
+    margin: 150px auto;
     padding: 40px;
     background: linear-gradient(to bottom, #faf7f3, #f8f5f1); /* Inner gradient */
     border-radius: 15px;
@@ -246,7 +246,7 @@ ul {
 .site-footer {
     background-color: #e0d9d0; /* Light grey/beige footer */
     padding: 20px 5%;
-    margin-top: 40px; /* Space above footer */
+    margin-top: 300px; /* Space above footer */
     text-align: center;
 }
 
@@ -275,16 +275,6 @@ ul {
     font-style: normal;  /* Or specify the style (e.g., italic) */
     /* Add other descriptors like font-display if needed */
 }
-
-/* ———————————————————————————
-   (your existing styles for header, nav, progress-tracker, etc.)
-   —————————————————————————— */
-
-/* … likely dozens of rules above … */
-
-/* ———————————————————————————
-   ADD THESE AT THE BOTTOM
-   —————————————————————————— */
 
 /* Center the tracker form below the product section */
 .order-tracker-form {
@@ -432,7 +422,7 @@ ul {
   }
 
   /* hide step-label until Track is pressed */
-.step-label.hidden {
+  .step-label.hidden {
     display: none;
   }
   
@@ -452,7 +442,7 @@ ul {
   }
   
   /* utility to hide until needed */
-.hidden {
+  .hidden {
     display: none !important;
   }
   
@@ -479,5 +469,40 @@ ul {
     font-weight: 500;
     color: #5c554e;
   }
-  
-  
+
+
+  /* Add this section to your trackerstyle.css */
+
+.back-button-container {
+    text-align: center; /* Center the button if its container is wider */
+    margin: 20px auto; /* Add some space above/below and center */
+}
+
+.back-button {
+    /* Basic button styling */
+    display: inline-block; /* Allows padding and margins */
+    padding: 10px 25px; /* Adjust padding for size */
+    font-size: 0.9em; /* Adjust font size */
+    font-weight: 500; /* Match other text weights */
+    text-transform: uppercase; /* Optional: Make text uppercase */
+    border: 1px solid #8b7d6b; /* A border color from your scheme */
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer; /* Indicate it's clickable */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+
+    /* Colors - Example: Inverted colors from the help button */
+    background-color: #8b7d6b; /* Background color */
+    color: #fff; /* Text color */
+}
+
+.back-button:hover {
+    /* Hover state */
+    background-color: #766955; /* Slightly darker background on hover */
+    border-color: #766955; /* Match border color on hover */
+    color: #fff; /* Keep text white */
+}
+
+/* Ensure it's hidden initially */
+.back-button-container.hidden {
+    display: none;
+}

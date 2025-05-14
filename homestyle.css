@@ -47,6 +47,14 @@ ul, ol {
     color: #5c554e;
 }
 
+@font-face {
+    font-family: 'Now'; /* Give your font a name */
+    src: url('fonts/now.medium.otf') format('woff2'); /* Path to your font file and format */
+    font-weight: normal; /* Or specify the weight if it's a specific weight file */
+    font-style: normal;  /* Or specify the style (e.g., italic) */
+    /* Add other descriptors like font-display if needed */
+}
+
 .main-nav ul {
     display: flex;
 }

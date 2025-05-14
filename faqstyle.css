@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0ebe5; /* Fallback */
+    /* Add the wood slat background image here */
+    background-image: url('images/bg1.png');
+    background-size: contain; /* Adjust as needed: 'cover', 'auto', etc. */
+    background-repeat: repeat; /* Or 'repeat-y' if it only tiles vertically */
+    background-attachment: fixed; /* Keeps background static during scroll */
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* --- Header Styles (Reused, Active link updated) --- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque white/off-white */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Now', sans-serif;
+    font-weight: 150;
+    font-size: 1em;
+    letter-spacing: 1.5mm;
+    color: #5c554e;
+}
+
+@font-face {
+    font-family: 'Now'; /* Give your font a name */
+    src: url('fonts/now.medium.otf') format('woff2'); /* Path to your font file and format */
+    font-weight: normal; /* Or specify the weight if it's a specific weight file */
+    font-style: normal;  /* Or specify the style (e.g., italic) */
+    /* Add other descriptors like font-display if needed */
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #7a736a;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent; /* Add space for border */
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: #333;
+    border-bottom: 2px solid #8b7d6b;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.search-container input[type="search"] {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 5px;
+    font-size: 0.9em;
+}
+
+.search-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    padding-left: 5px;
+}
+
+/* FAQ accordion styles */
+.faq-section {
+    max-width: 900px; /* Adjust max-width as needed */
+    margin: 50px auto;
+    padding: 40px;
+    background: linear-gradient(to bottom, #faf7f3, #f8f5f1); /* Inner gradient */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 42pt;
+    color: #4a4035;
+}
+.faq-item + .faq-item {
+    margin-top: 20px;
+}
+.faq-question {
+    background: #e7e2dc;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    font-weight: 500;
+    color: #5c554e;
+}
+.faq-question::after {
+    content: "+";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+}
+.faq-item.open .faq-question::after {
+    content: "–";
+}
+.faq-answer {
+    display: none;
+    padding: 15px 20px;
+    background: #f9f6f1;
+    border-radius: 0 0 8px 8px;
+    color: #6b5f51;
+    line-height: 1.5;
+}
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+/* --- Footer Styles (Reused) --- */
+.site-footer {
+    background-color: #e0d9d0;
+    padding: 20px 5%;
+    margin-top: 350px;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-nav ul li a {
+    font-size: 0.8em;
+    color: #7a736a;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #333;
+}
+
+

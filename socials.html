@@ -2,41 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Community | Ardor & Ash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ardor & Ash - Community</title>
     <link rel="stylesheet" href="socialstyle.css">
-    <link rel="stylesheet" href="homestyle.css"> <!-- Reuse fonts/colors -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav>
+
+    <header class="site-header">
+        <div class="logo">ARDOR & ASH</div>
+        <nav class="main-nav">
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="product.html">Product</a></li>
-                <li><a href="tracker.html">Track</a></li>
+                <li><a href="home.html">HOME</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="socials.html" class="active">Socials</a></li>
+                <li><a href="product.html">PRODUCT</a></li>
+                <li><a href="tracker.html">TRACK</a></li>
+                <li><a href="socials.html" class="active">SOCIALS</a></li>
             </ul>
         </nav>
+        <div class="search-container">
+            <input type="search" placeholder="Search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
     </header>
 
-    <main class="socials-container">
-        <h1>Welcome to the Community!</h1>
-        <section class="socials-content">
-            <div class="socials-text">
-                <h2>An Urban Classic.</h2>
-                <p>Get ready to swoon. We recently delivered Christy’s new custom couch, and let’s just say it’s a showstopper. 
-                It has that undeniable presence you only get with a piece made just for you, blending seamlessly into her home 
-                while adding a touch of unexpected elegance.</p>
-                <button onclick="window.location.href='mailto:community@ardorash.com'">Get in Touch!</button>
+    <main class="page-content community-page">
+        <section class="community-hero">
+            <span class="hero-tag">LATEST EDITION</span>
+            <h1>Welcome to the Community!</h1>
+        </section>
+
+        <section class="community-content-area">
+            <div class="community-column left-column">
+                <div class="content-block">
+                    <h2>An Urban Classic.</h2>
+                    <p>Get ready to swoon. We recently delivered Christy's new custom couch, and let's just say it's a showstopper. It has that undeniable presence you only get with a piece made just for you, blending seamlessly into her home while adding a touch of unexpected elegance. See why Christy is already loving her new favourite spot!</p>
+                    <div class="get-in-touch-block">
+                        <a href="#" class="touch-button">Get in Touch!</a>
+                        <p class="touch-subtext">Get in touch with the community by clicking here.</p>
+                    </div>
+                </div>
             </div>
-            <div class="socials-image">
-                <img src="images/chair.jpg" alt="Christy's Custom Chair">
+
+            <div class="community-column right-column">
+                <h3>Christy's Custom Chair</h3>
+                <div class="image-showcase">
+                    <img src="images/eggChair.png" alt="Christy's Custom Chair">
+                    <span class="image-badge">A&A</span>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Ardor & Ash</p>
+    <footer class="site-footer">
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="#">CONTACT US</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">WARRANTY</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#">TERMS OF SERVICE</a></li>
+                <li><a href="#">SUSTAINABILITY POLICY</a></li>
+            </ul>
+        </nav>
     </footer>
+
 </body>
 </html>

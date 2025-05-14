@@ -3,21 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ardor & Ash - Custom Chair</title>
+    <title>Ardor & Ash - Configure Your Product</title>
     <link rel="stylesheet" href="productstyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+    </head>
 <body>
+
+    <div id="splash-screen">
+        <div class="splash-message-container">
+            <h2 class="splash-message">Let's Get Started!</h2>
+        </div>
+    </div>
+
+    <div id="naming-screen" class="hidden-display">
+        <div class="naming-container">
+            <h2>Start by naming your design.</h2>
+            <input type="text" id="designNameInput">
+            <button id="submitDesignName">DONE</button>
+        </div>
+    </div>
+
+    <div id="category-screen" class="hidden-display">
+        <div class="category-container">
+            <h2>What type of design is this?</h2>
+            <select id="categorySelect">
+                <option value="">Select a Category</option> <option value="chair">Chair</option>
+                <option value="table">Table</option>
+                <option value="lamp">Lamp</option>
+                <option value="desk">Desk</option>
+                </select>
+            <button id="selectCategoryButton">CUSTOMISE DESIGN</button> </div>
+    </div>
+
+    <div id="request-sent-screen" class="hidden-display">
+        <div class="request-sent-container">
+            <p>Thanks for designing with us!</p>
+            <p>Would you like to make another design?</p>
+            <div class="request-sent-buttons">
+                <a href="home.html" class="request-sent-button">BACK TO HOME</a>
+                <button id="anotherDesignButton" class="request-sent-button">I WANT ANOTHER ONE!</button>
+            </div>
+        </div>
+    </div>
 
     <header class="site-header">
         <div class="logo">ARDOR & ASH</div>
         <nav class="main-nav">
             <ul>
                 <li><a href="home.html">HOME</a></li>
-                <li><a href="#">ABOUT</a></li>
+                <li><a href="faq.html">FAQ</a></li>
                 <li><a href="product.html" class="active">PRODUCT</a></li>
                 <li><a href="tracker.html">TRACK</a></li>
                 <li><a href="socials.html">SOCIALS</a></li>
@@ -29,62 +66,135 @@
         </div>
     </header>
 
-    <main class="page-content product-page">
-        <div class="product-container">
+    <main class="page-content configurator-page content-hidden">
+        <div class="configurator-container">
 
-            <div class="product-display-area">
-                <div class="left-column">
-                    <div class="product-image-wrapper">
-                        <img src="images/butterflyChair.png" alt="Custom designed wooden chair">
-                    </div>
-                    <div class="help-section-inline">
-                        <span>Got a question?</span>
-                        <a href="#" class="help-button-inline">LET US HELP!</a>
-                    </div>
-                    <div class="selection-preview">
-                        <span class="preview-label">Current Selection:</span>
-                        <div class="swatches">
-                            <span class="swatch" style="background-color: #bfae98;"></span> <span class="swatch" style="background-color: #8b7d6b;"></span> </div>
+            <div class="viewer-column">
+                <div class="model-viewport" id="modelViewport">
+                    <p class="placeholder-text">3D Model Placeholder</p>
+                </div>
+
+                <div class="option-info-display" id="optionInfoDisplay">
+                    <p>Hover over or select an option to see more details here.</p>
+                </div>
+
+                <div class="help-section-viewer">
+                    <span>Got a question?</span>
+                    <a href="#" class="help-button-inline">LET US HELP!</a>
+                </div>
+            </div>
+
+            <div class="options-column">
+                <div class="product-main-info">
+                    <h2 id="productTitle">Custom Chair</h2>
+                    <p class="product-base-description">Base Product Details: Start with our classic design and make it uniquely yours. Sustainable solutions for a beautiful planet.</p>
+                    <div class="dynamic-price-display">
+                        <span class="price-label">Est. Price:</span>
+                        <span class="price-value" id="currentPrice">AUD $1000</span>
                     </div>
                 </div>
 
-                <div class="right-column">
-                    <div class="product-header">
-                        <span class="info-icon"><i class="fas fa-info-circle"></i></span>
-                        <h2>Custom Chair</h2>
-                        <p class="product-subtitle">Sustainable Solutions for a Sustainable Planet</p>
-                        <div class="price-info">
-                            <span class="price-label">Est. Price</span>
-                            <span class="price-value">AUD $ 1000</span>
+                <div class="customization-options">
+                    <fieldset class="option-group">
+                        <legend>Dimensions (cm)</legend>
+                        <div class="dimension-inputs">
+                            <div class="input-wrapper">
+                                <label for="dimHeight">Height:</label>
+                                <input type="number" id="dimHeight" name="dimHeight" value="80" min="60" max="120" step="1">
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="dimWidth">Width:</label>
+                                <input type="number" id="dimWidth" name="dimWidth" value="50" min="40" max="80" step="1">
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="dimDepth">Depth:</label>
+                                <input type="number" id="dimDepth" name="dimDepth" value="55" min="45" max="70" step="1">
+                            </div>
                         </div>
-                    </div>
+                    </fieldset>
 
-                    <div class="product-options">
-                        <div class="option-item">Material</div>
-                        <div class="option-item">Height</div>
-                        <div class="option-item">Width</div>
-                        <div class="option-item">Remarks</div>
-                    </div>
+                    <fieldset class="option-group">
+                        <legend>Material</legend>
+                        <div class="swatch-group material-swatches">
+                            <label class="swatch-item" data-info="Solid Oak: Known for its strength and beautiful grain. Sourced sustainably.">
+                                <input type="radio" name="material" value="oak" checked>
+                                <span class="swatch-visual" style="background-image: url('path/to/oak-texture.jpg'); background-color: #D0B49F;" title="Oak"></span>
+                                <span class="swatch-label">Oak</span>
+                            </label>
+                            <label class="swatch-item" data-info="Walnut: A rich, dark wood with a luxurious feel. Offers excellent durability.">
+                                <input type="radio" name="material" value="walnut">
+                                <span class="swatch-visual" style="background-image: url('path/to/walnut-texture.jpg'); background-color: #6F5B4B;" title="Walnut"></span>
+                                <span class="swatch-label">Walnut</span>
+                            </label>
+                            <label class="swatch-item" data-info="Maple: A light-colored, fine-grained wood, very hard and resistant to wear.">
+                                <input type="radio" name="material" value="maple">
+                                <span class="swatch-visual" style="background-image: url('path/to/maple-texture.jpg'); background-color: #F3E5AB;" title="Maple"></span>
+                                <span class="swatch-label">Maple</span>
+                            </label>
+                        </div>
+                    </fieldset>
 
-                    <button class="quote-button">Request Quote</button>
+                    <fieldset class="option-group">
+                        <legend>Finish</legend>
+                        <div class="swatch-group finish-swatches">
+                             <label class="swatch-item" data-info="Natural Oil: Enhances the wood's natural beauty and provides good protection.">
+                                <input type="radio" name="finish" value="natural" checked>
+                                <span class="swatch-visual" style="background-color: rgba(200,180,150,0.5);" title="Natural Oil"></span>
+                                <span class="swatch-label">Natural</span>
+                            </label>
+                            <label class="swatch-item" data-info="Dark Stain: A deep, rich color that adds elegance.">
+                                <input type="radio" name="finish" value="dark_stain">
+                                <span class="swatch-visual" style="background-color: #4A3B31;" title="Dark Stain"></span>
+                                <span class="swatch-label">Dark</span>
+                            </label>
+                            <label class="swatch-item" data-info="White Wash: A light, airy finish that brightens the wood.">
+                                <input type="radio" name="finish" value="white_wash">
+                                <span class="swatch-visual" style="background-color: rgba(240,235,220,0.8);" title="White Wash"></span>
+                                <span class="swatch-label">White</span>
+                            </label>
+                        </div>
+                    </fieldset>
 
-                    <div class="inclusions">
-                        <p class="includes-label">Includes:</p>
-                        <ul>
-                            <li><i class="fas fa-shield-alt"></i> 5 year warranty</li>
-                            <li><i class="fas fa-truck"></i> Free delivery</li>
-                        </ul>
-                    </div>
+                     <fieldset class="option-group">
+                        <legend>Hardware (e.g., for drawers, if applicable)</legend>
+                        <div class="select-wrapper">
+                            <label for="hardwareStyle" class="sr-only">Hardware Style</label>
+                            <select id="hardwareStyle" name="hardwareStyle">
+                                <option value="none">None</option>
+                                <option value="brass_knob">Brass Knob</option>
+                                <option value="steel_handle">Steel Handle</option>
+                                <option value="black_matte">Black Matte Pull</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="option-group">
+                        <legend>Remarks</legend>
+                        <div class="input-wrapper">
+                            <label for="remarks" class="sr-only">Remarks</label>
+                            <textarea id="remarks" name="remarks" rows="3" placeholder="Any special requests or notes..."></textarea>
+                        </div>
+                    </fieldset>
                 </div>
-            </div>
 
-            <div class="product-specs">
-                <h3>Detailed Product Information and Specifications:</h3>
-                <p>Base Product Details: Information about the standard features of the furniture piece before customization.</p>
-                <p>Detailed Descriptions of Options: When a user hovers over or selects a material or finish, provide more detailed information (e.g., properties of the wood, durability of the finish, origin).</p>
-                <p>Technical Specifications: Display dimensions (overall and perhaps internal for drawers/shelves), weight (estimated), and other relevant technical details based on the customization. These should update as dimensions are changed.</p>
-            </div>
+                <button class="quote-button large-quote-button" id="requestQuoteButton">Request Quote</button>
 
+                <div class="inclusions-configurator">
+                    <p class="includes-label">Includes:</p>
+                    <ul>
+                        <li><i class="fas fa-shield-alt"></i> 5 year warranty</li>
+                        <li><i class="fas fa-truck"></i> Free delivery</li>
+                    </ul>
+                </div>
+
+                <div class="product-specifications-dynamic" id="productSpecsDynamic">
+                    <h3>Technical Specifications:</h3>
+                    <p><strong>Overall Dimensions:</strong> <span id="specHeight">80</span>cm (H) x <span id="specWidth">50</span>cm (W) x <span id="specDepth">55</span>cm (D)</p>
+                    <p><strong>Estimated Weight:</strong> <span id="specWeight">Approx. 15kg</span></p>
+                    <p><strong>Material:</strong> <span id="specMaterial">Oak</span></p>
+                    <p><strong>Finish:</strong> <span id="specFinish">Natural Oil</span></p>
+                    </div>
+            </div>
         </div>
     </main>
 
@@ -94,12 +204,14 @@
                 <li><a href="#">CONTACT US</a></li>
                 <li><a href="#">ABOUT</a></li>
                 <li><a href="#">WARRANTY</a></li>
-                <li><a href="faq.html" class="active">FAQ</a></li>
+                <li><a href="faq.html">FAQ</a></li>
                 <li><a href="#">TERMS OF SERVICE</a></li>
                 <li><a href="#">SUSTAINABILITY POLICY</a></li>
             </ul>
         </nav>
     </footer>
 
-</body>
+    <script src="productscript.js"></script>
+
+    </body>
 </html>
