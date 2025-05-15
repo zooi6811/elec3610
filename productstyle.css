@@ -11,7 +11,7 @@ body {
     /* Subtle gradient like first example */
     /* background: linear-gradient(to bottom, #fdfbf9, #e7e2dc); */
     background-image: url("images/bg3.png");
-    color: #4a4a4a;
+    color: #302821;
     line-height: 1.6;
     min-height: 100vh; /* Ensure footer is at least at bottom */
     display: flex;
@@ -51,6 +51,8 @@ img {
     top: 0;
     z-index: 100;
     width: 100%;
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px; 
 }
 
 .logo {
@@ -58,7 +60,7 @@ img {
     font-weight: 150;
     font-size: 1em;
     letter-spacing: 1.5mm;
-    color: #5c554e;
+    color: #302821;
 }
 
 @font-face {
@@ -89,7 +91,7 @@ img {
 .main-nav ul li a:hover,
 .main-nav ul li a.active {
     color: #333;
-    border-bottom: 2px solid #8b7d6b;
+    border-bottom: 2px solid #302821;
 }
 
 .search-container {
@@ -125,7 +127,7 @@ img {
 .product-container {
     max-width: 1200px; /* Adjust max width */
     margin: 20px auto;
-    background-color: #f8f5f1; /* Light beige container background */
+    background-color: #ffeedb; /* Light beige container background */
     border-radius: 25px;
     padding: 40px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -186,7 +188,7 @@ img {
 }
 
 .help-button-inline:hover {
-    background-color: #8b7d6b;
+    background-color: #302821;
     color: #fff;
 }
 
@@ -241,13 +243,13 @@ img {
 .product-header h2 {
     font-size: 2em;
     font-weight: 600;
-    color: #4a4035;
+    color: #302821;
     margin-bottom: 5px;
 }
 
 .product-header .product-subtitle {
     font-size: 0.9em;
-    color: #8b7d6b;
+    color: #302821;
     margin-bottom: 20px;
 }
 
@@ -261,15 +263,15 @@ img {
 
 .price-label {
     font-size: 0.85em;
-    color: #8b7d6b;
+    color: #302821;
     display: block;
     margin-bottom: 2px;
 }
 
 .price-value {
     font-size: 1.3em;
-    font-weight: 600;
-    color: #4a4035;
+    font-weight: 300;
+    color: #302821;
 }
 
 /* Product Options */
@@ -281,7 +283,7 @@ img {
 }
 
 .option-item {
-    background: linear-gradient(to bottom, #e7e2dc, #dcd5cc); /* Subtle gradient */
+    background: linear-gradient(to bottom, #5c5a58, #dcd5cc); /* Subtle gradient */
     border: 1px solid #d3c9bc;
     border-radius: 10px;
     padding: 15px 20px;
@@ -309,7 +311,7 @@ img {
 
 /* Quote Button */
 .quote-button {
-    background-color: #4a4035; /* Dark brown */
+    background-color: #302821; /* Dark brown */
     color: #fff;
     border: none;
     padding: 18px 20px;
@@ -334,7 +336,7 @@ img {
 }
 .includes-label{
     font-size: 0.9em;
-    color: #8b7d6b;
+    color: #302821;
     margin-bottom: 10px;
     font-weight: 500;
 }
@@ -353,7 +355,7 @@ img {
     gap: 8px; /* Space between icon and text */
 }
 .inclusions ul li i {
-    color: #8b7d6b; /* Icon color */
+    color: #302821; /* Icon color */
     font-size: 1.1em;
 }
 
@@ -369,7 +371,7 @@ img {
 .product-specs h3 {
     font-size: 1.3em;
     font-weight: 600;
-    color: #4a4035;
+    color: #302821;
     margin-bottom: 15px;
 }
 
@@ -477,7 +479,7 @@ img {
     gap: 30px; /* Space between viewer and options columns */
     max-width: 1600px; /* Allow wider layout */
     margin: 0 auto;
-    background-color: #f8f5f1; /* Light beige container for options area */
+    background-color: #ffeedbde; /* Light beige container for options area */
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     /* Remove padding here if columns handle their own internal padding */
@@ -488,7 +490,7 @@ img {
     flex: 3; /* Viewer takes more space, adjust ratio as needed (e.g., 2 or 2.5) */
     display: flex;
     flex-direction: column;
-    background-color: #e7e2dc; /* Slightly darker background for viewer area */
+    background-color: #ffeedbec; /* Slightly darker background for viewer area */
     border-radius: 20px 0 0 20px; /* Round corners on the left */
     padding: 20px;
 }
@@ -506,7 +508,7 @@ img {
     box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 .model-viewport .placeholder-text {
-    color: #8b7d6b;
+    color: #302821;
     font-size: 1.2em;
 }
 
@@ -524,7 +526,7 @@ img {
     border-radius: 20px; font-size: 0.9em; font-weight: 500;
     border: 1px solid #d3c9bc; transition: background-color 0.3s ease, color 0.3s ease;
 }
-.help-button-inline:hover { background-color: #8b7d6b; color: #fff; }
+.help-button-inline:hover { background-color: #302821; color: #fff; }
 
 
 /* Options Column (Right) */
@@ -549,7 +551,7 @@ img {
 .product-main-info h2 {
     font-size: 2em;
     font-weight: 600;
-    color: #4a4035;
+    color: #302821;
     margin-bottom: 8px;
 }
 .product-main-info .product-base-description {
@@ -567,14 +569,14 @@ img {
 }
 .dynamic-price-display .price-label {
     font-size: 0.9em;
-    color: #8b7d6b;
+    color: #302821;
     font-weight: 500;
     margin-right: 10px;
 }
 .dynamic-price-display .price-value {
     font-size: 1.6em;
-    font-weight: 700;
-    color: #4a4035;
+    font-weight: 300;
+    color: #302821;
 }
 
 .customization-options .option-group {
@@ -620,7 +622,7 @@ img {
 .input-wrapper input[type="number"]:focus,
 .select-wrapper select:focus,
 .input-wrapper textarea:focus {
-    border-color: #8b7d6b;
+    border-color: #302821;
     outline: none;
     box-shadow: 0 0 0 2px rgba(139, 125, 107, 0.2);
 }
@@ -669,15 +671,15 @@ img {
 }
 .swatch-item input[type="radio"]:checked + .swatch-visual + .swatch-label {
     font-weight: 600;
-    color: #4a4035;
+    color: #302821;
 }
 .swatch-item input[type="radio"]:checked ~ .swatch-visual { /* Style for visual when checked */
-    border: 2px solid #8b7d6b; /* Highlight border */
-    box-shadow: 0 0 0 2px #8b7d6b; /* Outer glow */
+    border: 2px solid #302821; /* Highlight border */
+    box-shadow: 0 0 0 2px #302821; /* Outer glow */
 }
 /* For focus state on the label wrapping the radio */
 .swatch-item:focus-within {
-    border-color: #8b7d6b; /* Or use outline */
+    border-color: #302821; /* Or use outline */
     /* box-shadow: 0 0 0 2px rgba(139, 125, 107, 0.3); */
 }
 
@@ -700,7 +702,7 @@ img {
     width: 100%;
     margin: 10px 0 25px 0; /* Adjust margin */
     /* Inherit other .quote-button styles or redefine */
-    background-color: #4a4035; color: #fff; border: none;
+    background-color: #302821; color: #fff; border: none;
     border-radius: 12px; cursor: pointer; text-align: center;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -716,7 +718,7 @@ img {
     border-top: 1px solid #e0d9d0;
 }
 .inclusions-configurator .includes-label { /* Style as needed */
-    font-size: 0.9em; color: #8b7d6b; margin-bottom: 10px; font-weight: 500;
+    font-size: 0.9em; color: #302821; margin-bottom: 10px; font-weight: 500;
 }
 .inclusions-configurator ul {
     display: flex;
@@ -726,7 +728,7 @@ img {
 .inclusions-configurator ul li { /* Style as needed */
     font-size: 0.9em; color: #7a736a; display: flex; align-items: center; gap: 8px;
 }
-.inclusions-configurator ul li i { color: #8b7d6b; font-size: 1.1em;}
+.inclusions-configurator ul li i { color: #302821; font-size: 1.1em;}
 
 
 .product-specifications-dynamic {
@@ -737,7 +739,7 @@ img {
 .product-specifications-dynamic h3 {
     font-size: 1.2em;
     font-weight: 600;
-    color: #4a4035;
+    color: #302821;
     margin-bottom: 10px;
 }
 .product-specifications-dynamic p {
@@ -746,7 +748,7 @@ img {
     margin-bottom: 8px;
 }
 .product-specifications-dynamic p strong {
-    color: #4a4035;
+    color: #302821;
 }
 
 .sr-only { /* Screen-reader only class */
@@ -812,7 +814,7 @@ img {
 
 /* New container for the message box */
 .splash-message-container {
-    background-color: #e0d9d0a6; /* White background for the message box */
+    background-color: #ffeedba6; /* White background for the message box */
     padding: 300px 500px; /* Adjust padding */
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Subtle shadow */
@@ -825,7 +827,7 @@ img {
 .splash-message {
     font-size: 56pt; /* Keep font size */
     font-weight: 300;
-    color: #4a4035;
+    color: #302821;
     opacity: 1; /* Message is visible within its container */
     /* You can remove or modify the animation if the container handles the main fade */
     /* animation: pulseFadeIn 1.5s ease-out forwards; */
@@ -898,7 +900,7 @@ img {
 
 
 .naming-container {
-    background-color: #e0d9d0a6; /* White background for the message box */
+    background-color: #ffeedba6; /* White background for the message box */
     padding: 175px 200px; /* Adjust padding */
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -914,7 +916,7 @@ img {
 .naming-container h2 {
     font-size: 56pt;
     font-weight: 300;
-    color: #4a4035;
+    color: #302821;
     margin-bottom: 0; /* Reset default h2 margin */
 }
 
@@ -931,13 +933,13 @@ img {
 }
 
 #designNameInput:focus {
-    border-color: #8b7d6b;
+    border-color: #302821;
     outline: none;
     box-shadow: 0 0 0 2px rgba(139, 125, 107, 0.2);
 }
 
 #submitDesignName {
-    background-color: #8b7d6b; /* Button color */
+    background-color: #302821; /* Button color */
     color: #f1f1ef;
     border: none;
     padding: 20px 150px;
@@ -988,7 +990,7 @@ img {
 
 
 .category-container {
-    background-color: #e0d9d0a6; /* White background for the message box */
+    background-color: #ffeedba6; /* White background for the message box */
     padding: 200px 250px; /* Adjust padding */
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -1004,7 +1006,7 @@ img {
 .category-container h2 {
     font-size: 56pt;
     font-weight: 300;
-    color: #4a4035;
+    color: #302821;
     margin-bottom: 0;
 }
 
@@ -1012,7 +1014,7 @@ img {
     padding: 12px 15px;
     border: 1px solid #d3c9bc;
     border-radius: 8px;
-    font-size: 20pt;
+    font-size: 18pt;
     color: #4a4a4a;
     width: 100%;
     max-width: 700px;
@@ -1030,14 +1032,14 @@ img {
     background-size: 12px auto;
 }
 #categorySelect:focus {
-    border-color: #8b7d6b;
+    border-color: #302821;
     outline: none;
     box-shadow: 0 0 0 2px rgba(139, 125, 107, 0.2);
 }
 
 
 #selectCategoryButton {
-    background-color: #8b7d6b;
+    background-color: #302821;
     color: #f1f1ef;
     border: none;
     padding: 20px 150px;
@@ -1087,7 +1089,7 @@ img {
 
 
 .request-sent-container {
-    background-color: #e0d9d0a6; /* White background for the message box */
+    background-color: #ffeedba6; /* White background for the message box */
     padding: 200px 250px; /* Adjust padding */
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -1119,7 +1121,7 @@ img {
 
 .request-sent-button {
     display: inline-block; /* Treat links as blocks for padding */
-    background-color: #8b7d6b;
+    background-color: #302821;
     color: #f1f1ef;
     border: none; /* For button */
     padding: 12px 100px;

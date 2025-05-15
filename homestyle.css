@@ -13,7 +13,7 @@ body {
     background-size: contain; /* Adjust as needed: 'cover', 'auto', etc. */
     background-repeat: repeat; /* Or 'repeat-y' if it only tiles vertically */
     background-attachment: fixed; /* Keeps background static during scroll */
-    color: #4a4a4a;
+    color: #302821;
     line-height: 1.6;
 }
 
@@ -37,6 +37,8 @@ ul, ol {
     position: sticky; /* Make header sticky */
     top: 0;
     z-index: 100;
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px; 
 }
 
 .logo {
@@ -44,7 +46,7 @@ ul, ol {
     font-weight: 150;
     font-size: 1em;
     letter-spacing: 1.5mm;
-    color: #5c554e;
+    color: #302821;
 }
 
 @font-face {
@@ -111,10 +113,10 @@ ul, ol {
 .grid-container {
     display: grid;
     max-width: 1100px; /* Adjust overall width */
-    margin: 20px auto;
+    margin: 7.5px auto;
     grid-template-columns: 1fr 1fr; /* Two equal columns */
     grid-template-rows: auto auto; /* Rows adjust to content */
-    gap: 25px; /* Space between grid items */
+    gap: 20px; /* Space between grid items */
     grid-template-areas:
         "hero hero"
         "how-works community-stack"; /* Define areas */
@@ -130,12 +132,55 @@ section {
 /* Hero Block */
 .hero-block {
     grid-area: hero;
-    background-color: #f8f5f1; /* Light beige */
-    color: #4a4035;
+    background-color: #ffeedb; /*  Light beige */
+    color: #302821;
+    display: flex; /* Use flex to position text and image */
+    align-items: center; /* Make items full height */
+    padding: 0; /* Remove section padding, apply to children */
+    overflow: hidden; /* Clip image corners */
+    max-height: 400px;
+    position: relative;
+}
+
+.hero-content {
+    padding: 30px;
+    flex-grow: 1; 
+    flex-basis: 60%; /* Text takes more space */
+    z-index: 2;
+}
+
+.hero-image {
+    flex-basis: 40%; /* Image takes 40% of the space */
+    flex-shrink: 0; /* Prevent image from shrinking below 40% base */
+    min-width: 0; /* Allow shrinking if container is smaller */
+    height: 100%; /* Make image container fill height of flex item */
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position relative to .hero-image */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #ffeedb, rgba(0, 0, 0, 0)); /* Example: fades from semi-transparent black on the left to transparent on the right */
+    z-index: 1; /* Ensure the pseudo-element is above the image (which is z-index 0 by default) */
+}
+
+.hero-image img {
+    display: block; /* Remove extra space below image */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area without distorting, will crop */
+    position: relative; 
+    z-index: 0; 
 }
 
 .hero-block h1 {
-    font-size: 2.8em; /* Adjust size */
+    letter-spacing: -2.7px;
+    font-size: 50pt; /* Adjust size */
     font-weight: 600;
     line-height: 1.2;
     margin-bottom: 15px;
@@ -175,15 +220,61 @@ section {
 
 /* How it Works Block */
 .how-it-works-block {
+    font-family: 'Inter', sans-serif;
     grid-area: how-works;
-    background-color: #4a4035; /* Dark brown */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    padding: 0;
+    background-color: #302821; /* Dark brown */
     color: #f0ebe5; /* Light text */
+    max-height: 400px;
+}
+
+.how-it-works-image {
+    flex-basis: 40%;
+    flex-shrink: 0;
+    min-height: 0;
+    position: relative; 
+    z-index: 1;
+}
+
+.how-it-works-image::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position relative to .hero-image */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to top, #302821, rgba(0, 0, 0, 0)); /* Example: fades from semi-transparent black on the left to transparent on the right */
+    z-index: 1; /* Ensure the pseudo-element is above the image (which is z-index 0 by default) */
+}
+
+.how-it-works-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    position: relative; 
+    z-index: 0; 
+}
+
+.how-it-works-text {
+    flex-basis: 50%; /* Occupy roughly 50% of the height */
+    flex-grow: 1; /* Allow text to grow to fill remaining space if needed */
+    padding-left: 30px;
+    padding-top: 20px;
+    background-color: #302821; /* Dark brown */
+    color: #ffeedb; /* Light text */
+    font-size: 1em; /* Apply base font size */
+    overflow-y: auto; /* Add scroll if text is too long */
 }
 
 .how-it-works-block h3 {
-    font-size: 1.4em;
+    font-size: 1.9em;
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .how-it-works-block ol {
@@ -199,21 +290,21 @@ section {
 }
 /* Custom list numbers */
 .how-it-works-block ol li::before {
-     content: counter(list-item);
-     counter-increment: list-item;
-     position: absolute;
-     left: 0;
-     top: -2px;
-     background-color: rgba(255, 255, 255, 0.2); /* Circle background */
-     color: #fff;
-     width: 24px;
-     height: 24px;
-     border-radius: 50%;
-     display: inline-block;
-     text-align: center;
-     font-size: 0.85em;
-     line-height: 24px; /* Center number vertically */
-     font-weight: 500;
+    content: counter(list-item);
+    counter-increment: 1;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    background-color: rgba(255, 255, 255, 0.2); /* Circle background */
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block; 
+    text-align: center;
+    font-size: 0.85em;
+    line-height: 24px; /* Center number vertically */
+    font-weight: 500;
 }
 
 
@@ -236,8 +327,8 @@ section {
 /* Start Designing Block */
 .start-designing-block {
     grid-area: start-designing;
-    background-color: #4a4035; /* Dark brown */
-    color: #f0ebe5; /* Light text */
+    background-color: #302821; /* Dark brown */
+    color: #ffeedb; /* Light text */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -245,9 +336,10 @@ section {
 }
 
 .start-designing-block a {
-    font-size: 1.5em; /* Larger text */
-    font-weight: 600;
-    padding: 20px; /* Make it feel like a button */
+    font-size: 24pt; /* Larger text */
+    font-weight: 500;
+    padding: 5px; /* Make it feel like a button */
+    font-family: 'Inter', sans-serif;
 }
 .start-designing-block a:hover {
     opacity: 0.9;
@@ -256,9 +348,10 @@ section {
 
 /* Community Block */
 .community-block {
+    font-family: 'Inter', sans-serif;
     grid-area: community;
-    background-color: #4a4035; /* Dark brown */
-    color: #f0ebe5; /* Light text */
+    background-color: #302821; /* Dark brown */
+    color: #ffeedb; /* Light text */
     display: flex; /* Use flex to position text and image */
     align-items: stretch; /* Make items full height */
     padding: 0; /* Remove section padding, apply to children */
@@ -271,7 +364,7 @@ section {
 }
 
 .community-block h4 {
-    font-size: 1.3em;
+    font-size: 1.4em;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -293,6 +386,18 @@ section {
 .community-image {
     flex-basis: 40%; /* Image takes less space */
     position: relative; /* For potential overlay effects */
+    z-index: 1;
+}
+
+.community-image::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position relative to .hero-image */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #302821, rgba(0, 0, 0, 0)); /* Example: fades from semi-transparent black on the left to transparent on the right */
+    z-index: 1; /* Ensure the pseudo-element is above the image (which is z-index 0 by default) */
 }
 
 .community-image img {
@@ -300,6 +405,8 @@ section {
     height: 100%;
     object-fit: cover; /* Cover the area, might crop */
     display: block;
+    position: relative; 
+    z-index: 0; 
 }
 
 
@@ -340,6 +447,25 @@ section {
             "start-designing" /* Change order if desired */
             "how-works"
             "community";
+    }
+
+    .hero-block {
+        flex-direction: column; /* Stack vertically */
+        align-items: stretch; /* Stretch items to fill width */
+        padding: 20px; /* Add padding back to the section */
+    }
+
+    .hero-content {
+        flex-basis: auto; /* Remove flex basis */
+        width: auto; /* Remove width limit */
+        padding: 0; /* Remove padding if already on section */
+    }
+
+    .hero-image {
+        flex-basis: auto; /* Remove flex basis */
+        min-width: auto; /* Remove min-width */
+        height: auto; /* Remove fixed height */
+        max-height: 200px; /* Optional: Limit image height on mobile */
     }
 
     .site-header {

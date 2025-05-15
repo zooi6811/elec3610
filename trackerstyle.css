@@ -11,7 +11,7 @@ body {
     /* A subtle gradient similar to the image */
     /* background: linear-gradient(to bottom, #fdfbf9, #e7e2dc); */
     background-image: url("images/bg2.png");
-    color: #4a4a4a; /* Default text color */
+    color: #302821; /* Default text color */
     line-height: 1.6;
     min-height: 100vh;
 }
@@ -37,6 +37,8 @@ ul {
     top: 0;
     z-index: 100;
     width: 100%;
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px; 
 }
 
 .logo {
@@ -96,10 +98,11 @@ ul {
 
 /* Main Content Area */
 .content-area {
-    max-width: 900px; /* Adjust max-width as needed */
+    max-width: 1400px; /* Adjust max-width as needed */
     margin: 150px auto;
     padding: 40px;
-    background: linear-gradient(to bottom, #faf7f3, #f8f5f1); /* Inner gradient */
+    background: linear-gradient(to bottom, #d8c6ad, #ece9e5 );
+    background-color: #ece9e5;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     text-align: center;
@@ -117,9 +120,9 @@ ul {
 }
 
 .order-details h1 {
-    font-size: 2.8em;
-    font-weight: 600;
-    color: #4a4035;
+    font-size: 5em;
+    font-weight: 450;
+    color: #302821;
     margin-bottom: 5px;
 }
 
@@ -146,7 +149,7 @@ ul {
 .order-details .delivery-date {
     font-size: 1.4em;
     font-weight: 500;
-    color: #4a4035;
+    color: #302821;
     margin-bottom: 30px;
 }
 
@@ -328,7 +331,7 @@ ul {
   
   .order-tracker-form.search-container {
     padding: 0;                     /* remove inner gap */
-    background-color: #fff;         /* white pill background */
+    background-color: #fffefd;         /* white pill background */
     border: 1px solid #ddd;         /* your light grey border */
     border-radius: 30px;            /* full pill‐round */
     overflow: hidden;               /* clip children to that round shape */

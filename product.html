@@ -118,17 +118,17 @@
                         <div class="swatch-group material-swatches">
                             <label class="swatch-item" data-info="Solid Oak: Known for its strength and beautiful grain. Sourced sustainably.">
                                 <input type="radio" name="material" value="oak" checked>
-                                <span class="swatch-visual" style="background-image: url('path/to/oak-texture.jpg'); background-color: #D0B49F;" title="Oak"></span>
+                                <span class="swatch-visual" style="background-image: url('images/oak.jpg'); background-color: #D0B49F;" title="Oak"></span>
                                 <span class="swatch-label">Oak</span>
                             </label>
                             <label class="swatch-item" data-info="Walnut: A rich, dark wood with a luxurious feel. Offers excellent durability.">
                                 <input type="radio" name="material" value="walnut">
-                                <span class="swatch-visual" style="background-image: url('path/to/walnut-texture.jpg'); background-color: #6F5B4B;" title="Walnut"></span>
+                                <span class="swatch-visual" style="background-image: url('images/walnut.jpeg'); background-color: #6F5B4B;" title="Walnut"></span>
                                 <span class="swatch-label">Walnut</span>
                             </label>
                             <label class="swatch-item" data-info="Maple: A light-colored, fine-grained wood, very hard and resistant to wear.">
                                 <input type="radio" name="material" value="maple">
-                                <span class="swatch-visual" style="background-image: url('path/to/maple-texture.jpg'); background-color: #F3E5AB;" title="Maple"></span>
+                                <span class="swatch-visual" style="background-image: url('images/maple.jpeg'); background-color: #F3E5AB;" title="Maple"></span>
                                 <span class="swatch-label">Maple</span>
                             </label>
                         </div>
@@ -156,7 +156,7 @@
                     </fieldset>
 
                      <fieldset class="option-group">
-                        <legend>Hardware (e.g., for drawers, if applicable)</legend>
+                        <legend>Hardware (if applicable)</legend>
                         <div class="select-wrapper">
                             <label for="hardwareStyle" class="sr-only">Hardware Style</label>
                             <select id="hardwareStyle" name="hardwareStyle">
@@ -211,6 +211,9 @@
         </nav>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.141.0/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.141.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://unpkg.com/three@0.141.0/examples/js/controls/OrbitControls.js"></script>
     <script src="productscript.js"></script>
 
     </body>

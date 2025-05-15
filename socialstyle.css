@@ -8,7 +8,7 @@ body {
     background-size: contain; /* Or 'auto' if it's a seamless tile */
     background-repeat: repeat;
     background-attachment: fixed;
-    color: #4a4a4a;
+    color: #302821;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
@@ -31,6 +31,8 @@ img { max-width: 100%; height: auto; display: block; }
     position: sticky; /* Make header sticky */
     top: 0;
     z-index: 100;
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px; 
 }
 
 .logo {
@@ -38,12 +40,20 @@ img { max-width: 100%; height: auto; display: block; }
     font-weight: 150;
     font-size: 1em;
     letter-spacing: 1.5mm;
-    color: #5c554e;
+    color: #302821;
 }
 
 @font-face {
     font-family: 'Now'; /* Give your font a name */
     src: url('fonts/now.medium.otf') format('woff2'); /* Path to your font file and format */
+    font-weight: normal; /* Or specify the weight if it's a specific weight file */
+    font-style: normal;  /* Or specify the style (e.g., italic) */
+    /* Add other descriptors like font-display if needed */
+}
+
+@font-face {
+    font-family: 'Roxborough'; /* Give your font a name */
+    src: url('fonts/roxborough-cf-regular.otf') format('woff2'); /* Path to your font file and format */
     font-weight: normal; /* Or specify the weight if it's a specific weight file */
     font-style: normal;  /* Or specify the style (e.g., italic) */
     /* Add other descriptors like font-display if needed */
@@ -82,7 +92,7 @@ img { max-width: 100%; height: auto; display: block; }
     padding: 20px 5% 40px; /* More top padding */
     text-align: center;
     /* Darker overlay for the hero title section */
-    background-color: rgba(104, 98, 93, 0.6); /* Dark semi-transparent overlay */
+    background-color: rgba(104, 98, 93, 0); /* Dark semi-transparent overlay */
     /* If you want a darker wood texture instead:
     background-image: url('path/to/your/dark-wood-slat-background.jpg');
     background-size: cover;
@@ -95,7 +105,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .community-hero .hero-tag {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.2); /* Light transparent pill */
+    background-color: rgba(20, 20, 20, 0.349); /* Light transparent pill */
     color: #f0f0f0;
     padding: 6px 15px;
     border-radius: 20px;
@@ -107,17 +117,18 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .community-hero h1 {
-    font-size: 3.5em; /* Large title */
-    font-weight: 100; /* Bolder font for title */
+    font-size: 5em; /* Large title */
+    font-weight: 400; /* Bolder font for title */
     line-height: 1.2;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.082);
+    color:#fffaf2;
 }
 
 .community-content-area {
     display: flex;
-    gap: 40px; /* Space between columns */
-    padding: 0 5% 40px; /* Page side padding and bottom padding */
-    max-width: 1400px; /* Max width for content area */
+    gap: 0px; /* Space between columns */
+    padding-left: 200px; /* Page side padding and bottom padding */
+    max-width: 2000px; /* Max width for content area */
     margin: 0 auto; /* Center content area */
 }
 
@@ -126,28 +137,81 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .left-column .content-block {
-    background-color: #f8f5f1; /* Light beige */
-    padding: 35px;
+    padding-left: 300px;
+    background: linear-gradient(to left, #302821, #302821, #30282100);
+    padding-top: 35px;
+    padding-right: 35px;
     border-radius: 20px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
 }
 
 .left-column h2 {
     font-size: 2em;
-    font-weight: 600;
-    color: #4a4035;
+    font-weight: 400;
+    color: #ffeedb;
     margin-bottom: 15px;
 }
 
 .left-column p {
     font-size: 0.95em;
-    color: #5c554e;
+    color: #ffeedb;
     line-height: 1.7;
     margin-bottom: 25px;
 }
 
+.left-column h3 {
+    font-family: 'Roxborough', serif;
+    text-decoration: underline;
+    text-underline-offset: 20px;
+    font-size: 1.9em;
+    font-weight: 500;
+    color: #fffaf2; /* Dark text on the wood background */
+    background-color: rgba(255, 255, 255, 0); /* Light semi-transparent tab */
+    padding: 8px 20px;
+    padding-left: 200px;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+    display: inline-block;
+    margin-bottom: 20px; /* Attach to image container */
+    position: relative;
+    top: 1px; /* Slight overlap to hide image container top border */
+    z-index: 1;
+}
+
+.left-column .image-showcase {
+    background-color: rgba(248, 245, 241, 0); /* Very light overlay for image, or just transparent */
+    border-radius: 15px; /* Rounded corners for image container */
+    padding-left: 200px; /* Spacing around image */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0);
+    position: relative; /* For the badge */
+    width: 100%; /* Take full width of column */
+    max-width: 500px; /* Max width for image showcase if desired */
+}
+
+.left-column .image-showcase img {
+    border-radius: 10px; /* Optional: if image itself needs rounded corners */
+}
+
+.left-column .image-badge {
+    position: absolute;
+    bottom: 15px; /* Adjust as per image */
+    right: 15px;  /* Adjust as per image */
+    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white badge */
+    color: #5c554e00;
+    font-size: 0.7em;
+    font-weight: 600;
+    padding: 5px 8px;
+    border-radius: 50%; /* Circular badge */
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
 .get-in-touch-block {
-    background-color: #ede6db; /* Slightly different background for this block */
+    background-color: #ede6db00; /* Slightly different background for this block */
     padding: 25px;
     border-radius: 15px;
     text-align: center;
@@ -156,8 +220,8 @@ img { max-width: 100%; height: auto; display: block; }
 
 .get-in-touch-block .touch-button {
     display: inline-block;
-    background-color: #fff; /* White button */
-    color: #4a4035;
+    background-color: #ffeedb; /* White button */
+    color: #302821;
     padding: 15px 40px;
     border-radius: 30px;
     font-size: 1.1em;
@@ -167,7 +231,7 @@ img { max-width: 100%; height: auto; display: block; }
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 .get-in-touch-block .touch-button:hover {
-    background-color: #4a4035;
+    background-color: #302821;
     color: #fff;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
@@ -181,16 +245,46 @@ img { max-width: 100%; height: auto; display: block; }
 
 
 .right-column {
+    padding-right: 300px;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center content if column is wider */
 }
 
+.right-column .content-block {
+    margin-top: 20px;
+    padding-right: 300px;
+    background: linear-gradient(to right, #302821, #302821, #30282100);
+    padding-top: 35px;
+    padding-right: 35px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.right-column h2 {
+    padding-left: 50px;
+    font-size: 2em;
+    font-weight: 400;
+    color: #ffeedb;
+    margin-bottom: 15px;
+}
+
+.right-column p {
+    padding-left: 50px;
+    font-size: 0.95em;
+    color: #ffeedb;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
 .right-column h3 {
-    font-size: 1.3em;
+    font-family: 'Roxborough', serif;
+    text-decoration: underline;
+    text-underline-offset: 20px;
+    font-size: 1.9em;
     font-weight: 500;
-    color: #4a4035; /* Dark text on the wood background */
-    background-color: rgba(255,255,255,0.7); /* Light semi-transparent tab */
+    color: #fffaf2; /* Dark text on the wood background */
+    background-color: rgba(255, 255, 255, 0); /* Light semi-transparent tab */
     padding: 8px 20px;
     border-radius: 10px 10px 0 0; /* Rounded top corners */
     display: inline-block;
@@ -201,13 +295,13 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .right-column .image-showcase {
-    background-color: rgba(248, 245, 241, 0.8); /* Very light overlay for image, or just transparent */
+    background-color: rgba(248, 245, 241, 0); /* Very light overlay for image, or just transparent */
     border-radius: 15px; /* Rounded corners for image container */
     padding: 20px; /* Spacing around image */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0);
     position: relative; /* For the badge */
     width: 100%; /* Take full width of column */
-    max-width: 500px; /* Max width for image showcase if desired */
+    max-width: 450px; /* Max width for image showcase if desired */
 }
 
 .right-column .image-showcase img {
@@ -218,8 +312,8 @@ img { max-width: 100%; height: auto; display: block; }
     position: absolute;
     bottom: 15px; /* Adjust as per image */
     right: 15px;  /* Adjust as per image */
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white badge */
-    color: #5c554e;
+    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white badge */
+    color: #5c554e00;
     font-size: 0.7em;
     font-weight: 600;
     padding: 5px 8px;
@@ -230,7 +324,7 @@ img { max-width: 100%; height: auto; display: block; }
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0);
 }
 
 
@@ -238,7 +332,7 @@ img { max-width: 100%; height: auto; display: block; }
 .site-footer {
     background-color: #e0d9d0;
     padding: 20px 5%;
-    margin-top: auto; /* Pushes footer down */
+    margin-top: 90px; /* Pushes footer down */
     text-align: center;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     width: 100%;

@@ -12,7 +12,7 @@ body {
     background-size: contain; /* Adjust as needed: 'cover', 'auto', etc. */
     background-repeat: repeat; /* Or 'repeat-y' if it only tiles vertically */
     background-attachment: fixed; /* Keeps background static during scroll */
-    color: #4a4a4a;
+    color: #302821;
     line-height: 1.6;
 }
 
@@ -36,6 +36,8 @@ ul, ol {
     position: sticky; /* Make header sticky */
     top: 0;
     z-index: 100;
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px; 
 }
 
 .logo {
@@ -43,7 +45,7 @@ ul, ol {
     font-weight: 150;
     font-size: 1em;
     letter-spacing: 1.5mm;
-    color: #5c554e;
+    color: #302821;
 }
 
 @font-face {
@@ -104,10 +106,10 @@ ul, ol {
 
 /* FAQ accordion styles */
 .faq-section {
-    max-width: 900px; /* Adjust max-width as needed */
+    max-width: 1400px; /* Adjust max-width as needed */
     margin: 50px auto;
     padding: 40px;
-    background: linear-gradient(to bottom, #faf7f3, #f8f5f1); /* Inner gradient */
+    background: linear-gradient(to bottom, #ffeedb, #f8f5f1); /* Inner gradient */
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     text-align: center;
@@ -116,9 +118,9 @@ ul, ol {
 .faq-section h2 {
     text-align: center;
     margin-bottom: 30px;
-    font-weight: 600;
+    font-weight: 450;
     font-size: 42pt;
-    color: #4a4035;
+    color: #302821;
 }
 .faq-item + .faq-item {
     margin-top: 20px;
@@ -129,8 +131,9 @@ ul, ol {
     border-radius: 8px;
     cursor: pointer;
     position: relative;
+    font-size: 1.2em;
     font-weight: 500;
-    color: #5c554e;
+    color: #302821;
 }
 .faq-question::after {
     content: "+";
@@ -147,8 +150,9 @@ ul, ol {
     display: none;
     padding: 15px 20px;
     background: #f9f6f1;
+    font-size: 1.2em;
     border-radius: 0 0 8px 8px;
-    color: #6b5f51;
+    color: #584e43;
     line-height: 1.5;
 }
 .faq-item.open .faq-answer {
@@ -159,7 +163,7 @@ ul, ol {
 .site-footer {
     background-color: #e0d9d0;
     padding: 20px 5%;
-    margin-top: 350px;
+    margin-top: 200px;
     text-align: center;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -173,7 +177,7 @@ ul, ol {
 
 .footer-nav ul li a {
     font-size: 0.8em;
-    color: #7a736a;
+    color: #46423c;
     font-weight: 500;
     transition: color 0.3s ease;
 }

@@ -1,3 +1,7 @@
+// import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'; 
+// import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+// import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Splash Screen Elements ---
     const splashScreen = document.getElementById('splash-screen');
@@ -52,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const anotherDesignButton = document.getElementById('anotherDesignButton');
 
     // --- Configuration & Pricing Rules ---
-    const basePrice = 1000;
+    const basePrice = 1999;
     const pricingRules = {
         materials: {
             oak: 0,
@@ -443,9 +447,139 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Initialization ---
-    function initializeApp() {
+    function initializeApp(selectedCategory) {
 
         console.log(`Initializing app for category: ${selectedCategory}`); // Log category
+
+        let scene, camera, renderer, model, orbitControls;
+        const modelViewport = document.getElementById('modelViewport');
+        let animationFrameId = null; // To keep track of the animation loop
+
+        function init3DScene() {
+            // 1. Create Scene
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xe7e2dc); // Match viewer-column background
+
+            // 2. Create Camera
+            camera = new THREE.PerspectiveCamera(75, modelViewport.clientWidth / modelViewport.clientHeight, 0.1, 1000);
+            camera.position.set(2, 2, 2); // Set camera position
+
+            // 3. Create Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(modelViewport.clientWidth, modelViewport.clientHeight);
+            // Clear the placeholder text and append the renderer's canvas
+            modelViewport.innerHTML = ''; // Remove placeholder text
+            modelViewport.appendChild(renderer.domElement);
+            renderer.setPixelRatio(window.devicePixelRatio); // For high-res displays
+
+            // 4. Add Lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // Soft white light
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+            directionalLight.position.set(1, 1, 1).normalize();
+            scene.add(directionalLight);
+
+            // 5. Add Orbit Controls
+            orbitControls = new OrbitControls(camera, renderer.domElement);
+            orbitControls.enableDamping = true; // Smooth camera movement
+            orbitControls.dampingFactor = 0.25;
+            orbitControls.screenSpacePanning = false;
+            // Optional: Limit rotation/zoom if needed
+
+            // 6. Handle Window Resizing
+            window.addEventListener('resize', onWindowResize, false);
+            function onWindowResize() {
+                camera.aspect = modelViewport.clientWidth / modelViewport.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(modelViewport.clientWidth, modelViewport.clientHeight);
+            }
+
+            // 7. Start Animation Loop
+            function animate() {
+                animationFrameId = requestAnimationFrame(animate);
+                orbitControls.update(); // Update controls
+                renderer.render(scene, camera); // Render the scene
+            }
+            animate();
+
+            // Call model loading after scene is set up
+            load3DModel('path/to/your/default_chair_model.glb'); // <<< Specify your model path
+        }
+
+        // --- NEW: Model Loading Function ---
+        function load3DModel(modelPath) {
+            const loader = new GLTFLoader();
+            loader.load(modelPath, (gltf) => {
+                model = gltf.scene; // Store the loaded model
+                scene.add(model); // Add model to the scene
+
+                // Optional: Center the model, adjust camera to fit etc.
+                 const bbox = new THREE.Box3().setFromObject(model);
+                 const center = bbox.getCenter(new THREE.Vector3());
+                 const size = bbox.getSize(new THREE.Vector3());
+                 const maxDim = Math.max(size.x, size.y, size.z);
+                 const fov = camera.fov * (Math.PI / 180);
+                 let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
+                 cameraZ *= 1.5; // Add some buffer
+                 camera.position.set(center.x + cameraZ, center.y + cameraZ, center.z + cameraZ); // Position camera
+                 camera.lookAt(center); // Point camera at center
+
+                 orbitControls.target.copy(center); // Set controls target
+                 orbitControls.update(); // Update controls
+
+
+                console.log('3D Model loaded:', model);
+                // NOW you can find parts of the model to update based on initial config
+                triggerAll3DModelUpdates(); // Update model based on initial config
+            }, undefined, (error) => {
+                console.error('An error occurred loading the 3D model:', error);
+                modelViewport.innerHTML = '<p class="placeholder-text" style="color: red;">Error loading 3D model.</p>';
+            });
+        }
+
+        // --- Clean up Three.js scene when navigating away or resetting ---
+        // This is important to prevent memory leaks if the configurator is re-initialized
+        // (e.g., when clicking "I Want Another One")
+        function dispose3DScene() {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            if (renderer) {
+                renderer.dispose();
+                if (renderer.domElement.parentNode) {
+                    renderer.domElement.parentNode.removeChild(renderer.domElement);
+                }
+            }
+            // Dispose of geometry and materials in the scene if necessary
+             scene.traverse((object) => {
+                 if (!object.isMesh) return;
+                 if (object.geometry) object.geometry.dispose();
+                 if (object.material) {
+                     if (Array.isArray(object.material)) {
+                         object.material.forEach(material => material.dispose());
+                     } else {
+                         object.material.dispose();
+                     }
+                 }
+             });
+             scene = null; // Clear the scene
+             model = null; // Clear the model reference
+             orbitControls = null;
+             window.removeEventListener('resize', onWindowResize); // Remove listener
+        }
+
+
+        // --- Existing Initialization Logic ---
+        // This runs when the main configurator page becomes visible
+
+        // *** Important: If initializeApp is called multiple times (like from "I Want Another One"),
+        // you should call dispose3DScene() first to clean up the previous scene.
+        // Add a check or structure your code to handle re-initialization.
+        // For now, assuming initializeApp is called only once when mainContent first becomes visible.
+
+
+        init3DScene(); // Initialize the 3D scene
         
         currentConfig.height = parseFloat(dimHeightInput.value);
         currentConfig.width = parseFloat(dimWidthInput.value);
@@ -472,6 +606,156 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log('Configurator Initialized. Current Config:', currentConfig);
         console.log('Note: 3D model updates are simulated in the console.');
+    }
+
+    // --- NEW: Update 3D Model Functions (Implement Three.js logic) ---
+
+    // Note: You'll need to find specific parts (meshes) of your loaded model
+    // by name or by traversing the scene graph. This depends on your model's structure.
+
+    function update3DModelMaterial(materialValue) {
+        console.log(`Updating 3D model material to: ${materialValue}`);
+        if (!model) { console.warn("3D model not loaded yet."); return; }
+
+        // Example: Find a mesh named 'Chair_Frame' and change its color
+        const chairFrame = model.getObjectByName('Chair_Frame'); // <<< Replace 'Chair_Frame'
+        if (chairFrame && chairFrame.isMesh) {
+            let materialColor;
+            switch (materialValue) {
+                case 'oak': materialColor = new THREE.Color(0xD0B49F); break;
+                case 'walnut': materialColor = new THREE.Color(0x6F5B4B); break;
+                case 'maple': materialColor = new THREE.Color(0xF3E5AB); break;
+                default: materialColor = new THREE.Color(0xD0B49F); // Default to oak color
+            }
+             if (chairFrame.material) {
+                 // Assuming a MeshStandardMaterial or similar PBR material
+                 if (Array.isArray(chairFrame.material)) {
+                      // Handle multi-material if necessary, e.g., chairFrame.material[0].color = materialColor;
+                 } else {
+                     chairFrame.material.color = materialColor;
+                     // If using textures, you might swap texture maps here
+                     // chairFrame.material.map = textureLoader.load(`path/to/${materialValue}_texture.jpg`);
+                     chairFrame.material.needsUpdate = true; // Tell Three.js material changed
+                 }
+             }
+        }
+    }
+
+    function update3DModelFinish(finishValue) {
+        console.log(`Updating 3D model finish to: ${finishValue}`);
+        if (!model) { console.warn("3D model not loaded yet."); return; }
+
+        // This logic depends heavily on how finishes are applied in your model.
+        // It might involve swapping textures, adjusting material properties,
+        // or using glTF material variants if your loader supports them.
+
+        // Example (Simplified: Just change shininess/roughness based on finish type)
+         const affectedParts = []; // <<< Array of mesh names affected by finish
+         model.traverse((o) => {
+             if (o.isMesh && affectedParts.includes(o.name)) {
+                 if (o.material && !Array.isArray(o.material) && o.material.isMeshStandardMaterial) {
+                     switch (finishValue) {
+                         case 'natural':
+                             o.material.roughness = 0.8; // More matte
+                             o.material.metalness = 0;
+                             break;
+                         case 'dark_stain':
+                             o.material.roughness = 0.6; // Slightly less matte
+                             o.material.metalness = 0;
+                             // You might also adjust the color/texture blend here
+                             break;
+                         case 'white_wash':
+                            o.material.roughness = 0.7;
+                            o.material.metalness = 0;
+                            // Adjust color/texture blend
+                            break;
+                         default: // Natural
+                            o.material.roughness = 0.8;
+                            o.material.metalness = 0;
+                     }
+                     o.material.needsUpdate = true;
+                 }
+             }
+         });
+         // If using glTF variants, you'd use something like:
+         // if (gltf && gltf.functions && gltf.functions.selectVariant) {
+         //     gltf.functions.selectVariant(finishValue); // Assuming variants match finish names
+         // }
+    }
+
+    function update3DModelDimensions(dimensions) {
+        console.log(`Updating 3D model dimensions: H=${dimensions.height}, W=${dimensions.width}, D=${dimensions.depth}`);
+        if (!model) { console.warn("3D model not loaded yet."); return; }
+
+        // This is the most complex part and depends entirely on your model's structure
+        // and how you want dimensions to affect it.
+
+        // VERY SIMPLIFIED Example: Scale the entire model (likely not desired)
+        // model.scale.set(dimensions.width / baseWidth, dimensions.height / baseHeight, dimensions.depth / baseDepth); // Need base dimensions
+
+        // Example: Scale specific parts - Requires knowing your model's hierarchy!
+        // Find the chair legs and scale them vertically
+        // const legs = model.getObjectByName('Chair_Legs'); // <<< Replace 'Chair_Legs'
+        // if(legs) {
+        //     const baseHeight = pricingRules.dimensions.baseHeight; // Get base height from pricing rules
+        //     legs.scale.y = dimensions.height / baseHeight;
+        //     legs.needsUpdate = true;
+        //     // You might also need to reposition other parts connected to the legs
+        // }
+
+        // Example: Scale the seat width/depth
+        // const seat = model.getObjectByName('Chair_Seat'); // <<< Replace 'Chair_Seat'
+        // if(seat) {
+        //     const baseWidth = pricingRules.dimensions.baseWidth;
+        //     const baseDepth = pricingRules.dimensions.baseDepth;
+        //     seat.scale.x = dimensions.width / baseWidth;
+        //     seat.scale.z = dimensions.depth / baseDepth;
+        //     seat.needsUpdate = true;
+        //     // You might also need to reposition armrests, back, etc.
+        // }
+
+        // This part requires custom logic based on your specific model.
+        // You might need to load different model parts, use morph targets, or procedurally adjust geometry.
+        // Start simple: Maybe just scale one identifiable part first.
+    }
+
+    function update3DModelHardware(hardwareValue) {
+        console.log(`Updating 3D model hardware to: ${hardwareValue}`);
+        if (!model) { console.warn("3D model not loaded yet."); return; }
+
+        // Assuming hardware parts are separate meshes you can find by name
+        // You would show/hide specific hardware parts here.
+
+        // Example: Hide all hardware first, then show the selected one
+        const allHardwareParts = ['Brass_Knob_Mesh', 'Steel_Handle_Mesh', 'Black_Matte_Mesh']; // <<< List names of hardware meshes
+        allHardwareParts.forEach(partName => {
+            const part = model.getObjectByName(partName);
+            if (part) {
+                part.visible = false; // Hide all
+            }
+        });
+
+        if (hardwareValue !== 'none') {
+            let selectedHardwareMeshName = '';
+             switch (hardwareValue) {
+                case 'brass_knob': selectedHardwareMeshName = 'Brass_Knob_Mesh'; break;
+                case 'steel_handle': selectedHardwareMeshName = 'Steel_Handle_Mesh'; break;
+                case 'black_matte': selectedHardwareMeshName = 'Black_Matte_Mesh'; break;
+             }
+             const selectedPart = model.getObjectByName(selectedHardwareMeshName);
+             if (selectedPart) {
+                 selectedPart.visible = true; // Show the selected one
+             }
+        }
+    }
+
+    function triggerAll3DModelUpdates() {
+        console.log("Triggering all 3D model updates...");
+         // These functions will now contain Three.js logic to update the model
+        update3DModelMaterial(currentConfig.material);
+        update3DModelFinish(currentConfig.finish);
+        update3DModelDimensions({ height: currentConfig.height, width: currentConfig.width, depth: currentConfig.depth });
+        update3DModelHardware(currentConfig.hardware);
     }
 
     // Event listeners are still attached here, but the initial logic that relies on visible elements waits for initializeApp()
@@ -525,6 +809,4 @@ document.addEventListener('DOMContentLoaded', () => {
         updateOptionInfo(null);
         update3DModelHardware(currentConfig.hardware);
     });
-
-    // initializeApp();
 });
