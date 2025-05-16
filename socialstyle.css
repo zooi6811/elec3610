@@ -1,11 +1,11 @@
 /* --- Basic Reset & Body Styles (Ensure these are suitable) --- */
+/* --- Basic Reset & Body Styles (Ensure these are suitable) --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f0ebe5; /* Fallback */
-    /* Assuming wood slat background from homepage example */
     background-image: url('images/bg3.png');
-    background-size: contain; /* Or 'auto' if it's a seamless tile */
+    background-size: contain;
     background-repeat: repeat;
     background-attachment: fixed;
     color: #302821;
@@ -14,10 +14,18 @@ body {
     display: flex;
     flex-direction: column;
 }
-main.page-content { flex-grow: 1; } /* Allows main content to fill space */
+main.page-content { flex-grow: 1; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 img { max-width: 100%; height: auto; display: block; }
+
+/* Add a transition for fading */
+.community-hero,
+.community-content-area,
+.get-in-touch-form-container,
+.thank-you-screen {
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
 
 
 /* --- Header & Footer Styles (Assuming these are already defined elsewhere) --- */
@@ -26,37 +34,37 @@ img { max-width: 100%; height: auto; display: block; }
     justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque white/off-white */
+    background-color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    position: sticky; /* Make header sticky */
+    position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom-left-radius: 20px; 
-    border-bottom-right-radius: 20px; 
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .logo {
     font-family: 'Now', sans-serif;
-    font-weight: 150;
+    font-weight: 150; /* Check if your font supports this weight */
     font-size: 1em;
-    letter-spacing: 1.5mm;
+    letter-spacing: 1.5mm; /* Consider px or em units */
     color: #302821;
 }
 
 @font-face {
-    font-family: 'Now'; /* Give your font a name */
-    src: url('fonts/now.medium.otf') format('woff2'); /* Path to your font file and format */
-    font-weight: normal; /* Or specify the weight if it's a specific weight file */
-    font-style: normal;  /* Or specify the style (e.g., italic) */
-    /* Add other descriptors like font-display if needed */
+    font-family: 'Now';
+    src: url('fonts/now.medium.otf') format('woff2'); /* Convert to woff2/woff */
+    font-weight: normal;
+    font-style: normal;
+     /* Add font-display: swap; */
 }
 
 @font-face {
-    font-family: 'Roxborough'; /* Give your font a name */
-    src: url('fonts/roxborough-cf-regular.otf') format('woff2'); /* Path to your font file and format */
-    font-weight: normal; /* Or specify the weight if it's a specific weight file */
-    font-style: normal;  /* Or specify the style (e.g., italic) */
-    /* Add other descriptors like font-display if needed */
+    font-family: 'Roxborough';
+    src: url('fonts/roxborough-cf-regular.otf') format('woff2'); /* Convert to woff2/woff */
+    font-weight: normal;
+    font-style: normal;
+     /* Add font-display: swap; */
 }
 
 .main-nav ul { display: flex; }
@@ -68,7 +76,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .main-nav ul li a:hover,
 .main-nav ul li a.active { color: #333; border-bottom-color: #8b7d6b; }
-.search-container { /* Styles from previous examples */
+.search-container {
     display: flex; align-items: center; background-color: #fff;
     border: 1px solid #ddd; border-radius: 20px; padding: 5px 10px;
 }
@@ -84,28 +92,19 @@ img { max-width: 100%; height: auto; display: block; }
 
 
 /* --- Community Page Specific Styles --- */
-/* .community-page { */
-    /* No specific padding here, handled by sections */
-/* } */
 
 .community-hero {
-    padding: 20px 5% 40px; /* More top padding */
+    padding: 20px 5% 40px;
     text-align: center;
-    /* Darker overlay for the hero title section */
-    background-color: rgba(104, 98, 93, 0); /* Dark semi-transparent overlay */
-    /* If you want a darker wood texture instead:
-    background-image: url('path/to/your/dark-wood-slat-background.jpg');
-    background-size: cover;
-    background-position: center;
-    */
+    background-color: rgba(104, 98, 93, 0); /* Adjust opacity if needed */
     color: #fff;
-    margin-bottom: 40px; /* Space before the two-column content */
-    position: relative; /* For positioning hero-tag if needed using absolute */
+    margin-bottom: 40px;
+    position: relative;
 }
 
 .community-hero .hero-tag {
     display: inline-block;
-    background-color: rgba(20, 20, 20, 0.349); /* Light transparent pill */
+    background-color: rgba(20, 20, 20, 0.349);
     color: #f0f0f0;
     padding: 6px 15px;
     border-radius: 20px;
@@ -117,8 +116,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .community-hero h1 {
-    font-size: 5em; /* Large title */
-    font-weight: 400; /* Bolder font for title */
+    font-size: 5em;
+    font-weight: 400;
     line-height: 1.2;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.082);
     color:#fffaf2;
@@ -126,18 +125,18 @@ img { max-width: 100%; height: auto; display: block; }
 
 .community-content-area {
     display: flex;
-    gap: 0px; /* Space between columns */
-    padding-left: 200px; /* Page side padding and bottom padding */
-    max-width: 2000px; /* Max width for content area */
-    margin: 0 auto; /* Center content area */
+    gap: 0px; /* Adjust gap if needed */
+    padding-left: 200px; /* Re-evaluate this padding */
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 .community-column {
-    flex: 1; /* Both columns take equal space initially */
+    flex: 1;
 }
 
 .left-column .content-block {
-    padding-left: 300px;
+    padding-left: 200px; /* Re-evaluate this padding */
     background: linear-gradient(to left, #302821, #302821, #30282100);
     padding-top: 35px;
     padding-right: 35px;
@@ -159,48 +158,48 @@ img { max-width: 100%; height: auto; display: block; }
     margin-bottom: 25px;
 }
 
-.left-column h3 {
+.left-column h3 { /* Check if this selector matches your HTML structure */
     font-family: 'Roxborough', serif;
     text-decoration: underline;
     text-underline-offset: 20px;
     font-size: 1.9em;
     font-weight: 500;
-    color: #fffaf2; /* Dark text on the wood background */
-    background-color: rgba(255, 255, 255, 0); /* Light semi-transparent tab */
+    color: #fffaf2;
+    background-color: rgba(255, 255, 255, 0); /* Adjust opacity if needed */
     padding: 8px 20px;
-    padding-left: 200px;
-    border-radius: 10px 10px 0 0; /* Rounded top corners */
+    padding-left: 150px; /* Re-evaluate this padding */
+    border-radius: 10px 10px 0 0;
     display: inline-block;
-    margin-bottom: 20px; /* Attach to image container */
+    margin-bottom: 20px;
     position: relative;
-    top: 1px; /* Slight overlap to hide image container top border */
+    top: 1px;
     z-index: 1;
 }
 
 .left-column .image-showcase {
-    background-color: rgba(248, 245, 241, 0); /* Very light overlay for image, or just transparent */
-    border-radius: 15px; /* Rounded corners for image container */
-    padding-left: 200px; /* Spacing around image */
+    background-color: rgba(248, 245, 241, 0); /* Adjust opacity if needed */
+    border-radius: 15px;
+    padding-left: 200px; /* Re-evaluate this padding */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0);
-    position: relative; /* For the badge */
-    width: 100%; /* Take full width of column */
-    max-width: 500px; /* Max width for image showcase if desired */
+    position: relative;
+    width: 100%;
+    max-width: 500px;
 }
 
 .left-column .image-showcase img {
-    border-radius: 10px; /* Optional: if image itself needs rounded corners */
+    border-radius: 10px;
 }
 
 .left-column .image-badge {
     position: absolute;
-    bottom: 15px; /* Adjust as per image */
-    right: 15px;  /* Adjust as per image */
-    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white badge */
-    color: #5c554e00;
+    bottom: 15px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0); /* Adjust opacity if needed */
+    color: #5c554e00; /* Adjust opacity if needed */
     font-size: 0.7em;
     font-weight: 600;
     padding: 5px 8px;
-    border-radius: 50%; /* Circular badge */
+    border-radius: 50%;
     width: 30px;
     height: 30px;
     display: flex;
@@ -211,7 +210,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .get-in-touch-block {
-    background-color: #ede6db00; /* Slightly different background for this block */
+    background-color: #ede6db00; /* Adjust opacity if needed */
     padding: 25px;
     border-radius: 15px;
     text-align: center;
@@ -220,7 +219,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .get-in-touch-block .touch-button {
     display: inline-block;
-    background-color: #ffeedb; /* White button */
+    background-color: #ffeedb;
     color: #302821;
     padding: 15px 40px;
     border-radius: 30px;
@@ -240,29 +239,29 @@ img { max-width: 100%; height: auto; display: block; }
     font-size: 0.85em;
     color: #7a736a;
     margin-top: 15px;
-    margin-bottom: 0; /* Reset margin */
+    margin-bottom: 0;
 }
 
 
 .right-column {
-    padding-right: 300px;
+    padding-right: 300px; /* Re-evaluate this padding */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content if column is wider */
+    align-items: center;
 }
 
 .right-column .content-block {
     margin-top: 20px;
-    padding-right: 300px;
+    padding-right: 300px; /* Re-evaluate this padding */
     background: linear-gradient(to right, #302821, #302821, #30282100);
     padding-top: 35px;
-    padding-right: 35px;
+    padding-right: 35px; /* This seems redundant with padding-right above */
     border-radius: 20px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
 }
 
 .right-column h2 {
-    padding-left: 50px;
+    padding-left: 50px; /* Internal padding */
     font-size: 2em;
     font-weight: 400;
     color: #ffeedb;
@@ -270,54 +269,54 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .right-column p {
-    padding-left: 50px;
+    padding-left: 50px; /* Internal padding */
     font-size: 0.95em;
     color: #ffeedb;
     line-height: 1.7;
     margin-bottom: 25px;
 }
 
-.right-column h3 {
+.right-column h3 { /* This selector matches your HTML structure */
     font-family: 'Roxborough', serif;
     text-decoration: underline;
     text-underline-offset: 20px;
     font-size: 1.9em;
     font-weight: 500;
-    color: #fffaf2; /* Dark text on the wood background */
-    background-color: rgba(255, 255, 255, 0); /* Light semi-transparent tab */
+    color: #fffaf2;
+    background-color: rgba(255, 255, 255, 0); /* Adjust opacity if needed */
     padding: 8px 20px;
-    border-radius: 10px 10px 0 0; /* Rounded top corners */
+    border-radius: 10px 10px 0 0;
     display: inline-block;
-    margin-bottom: 0; /* Attach to image container */
+    margin-bottom: 0;
     position: relative;
-    top: 1px; /* Slight overlap to hide image container top border */
+    top: 1px;
     z-index: 1;
 }
 
 .right-column .image-showcase {
-    background-color: rgba(248, 245, 241, 0); /* Very light overlay for image, or just transparent */
-    border-radius: 15px; /* Rounded corners for image container */
+    background-color: rgba(248, 245, 241, 0); /* Adjust opacity if needed */
+    border-radius: 15px;
     padding: 20px; /* Spacing around image */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0);
-    position: relative; /* For the badge */
-    width: 100%; /* Take full width of column */
-    max-width: 450px; /* Max width for image showcase if desired */
+    position: relative;
+    width: 100%;
+    max-width: 450px;
 }
 
 .right-column .image-showcase img {
-    border-radius: 10px; /* Optional: if image itself needs rounded corners */
+    border-radius: 10px;
 }
 
 .right-column .image-badge {
     position: absolute;
-    bottom: 15px; /* Adjust as per image */
-    right: 15px;  /* Adjust as per image */
-    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white badge */
-    color: #5c554e00;
+    bottom: 15px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0); /* Adjust opacity if needed */
+    color: #5c554e00; /* Adjust opacity if needed */
     font-size: 0.7em;
     font-weight: 600;
     padding: 5px 8px;
-    border-radius: 50%; /* Circular badge */
+    border-radius: 50%;
     width: 30px;
     height: 30px;
     display: flex;
@@ -332,7 +331,7 @@ img { max-width: 100%; height: auto; display: block; }
 .site-footer {
     background-color: #e0d9d0;
     padding: 20px 5%;
-    margin-top: 90px; /* Pushes footer down */
+    margin-top: 90px;
     text-align: center;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     width: 100%;
@@ -376,4 +375,88 @@ img { max-width: 100%; height: auto; display: block; }
     .main-nav ul { margin-top: 10px; margin-left: -30px; flex-wrap: wrap; gap: 10px; }
     .main-nav ul li { margin-left: 0; }
     .search-container { margin-top: 10px; width: 100%; }
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;/* Use !important to ensure it overrides other display properties */
+}
+
+/* Styles for the Get in Touch Form Container */
+.get-in-touch-form-container,
+.thank-you-screen {
+    position: fixed; /* Covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Use a background similar to the splash screen */
+    background-color: rgba(248, 245, 241, 0.151);
+    display: flex; /* Center the content */
+    align-items: center;
+    justify-content: center;
+    z-index: 50; /* Higher than main content (implicitly 0 or auto), lower than header (100) and footer (50) */
+    opacity: 1; /* Start fully visible when shown */
+}
+
+.form-content-wrapper,
+.thank-you-content-wrapper {
+    background-color: #ffeedba6; /* White background for the message box */
+    padding: 40px 300px; /* Adjust padding */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 90%;
+    width: auto;
+    display: flex; /* Use flex to stack internal elements */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between elements */
+}
+
+.form-content-wrapper h2,
+.thank-you-content-wrapper h2 {
+    font-size: 40pt;
+    font-weight: 300;
+    color: #302821;
+    margin-bottom: 0; /* Reset default h2 margin */
+}
+
+.form-content-wrapper p {
+    font-size: 1em;
+    margin-bottom: 0px;
+}
+
+#community-message {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 25px;
+    border: 1px solid #d3c9bc;
+    border-radius: 8px;
+    font-size: 14pt;
+    color: #4a4a4a;
+    width: 100%; /* Take full width of container */
+    max-width: 700px; /* Limit max width */
+    text-align: left;
+    transition: border-color 0.3s ease;
+}
+
+#send-message-button {
+    display: inline-block;
+    background-color: #302821; /* Dark button */
+    color: #ffeedb;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 1s ease, opacity 0.3s ease;
+}
+
+#send-message-button:hover {
+    background-color: #5c554e; /* Slightly lighter on hover */
+}
+
+.thank-you-content-wrapper p {
+    font-size: 1.1em;
 }

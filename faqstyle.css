@@ -126,14 +126,14 @@ ul, ol {
     margin-top: 20px;
 }
 .faq-question {
-    background: #e7e2dc;
+    background: #302821;
     padding: 15px 20px;
     border-radius: 8px;
     cursor: pointer;
     position: relative;
     font-size: 1.2em;
     font-weight: 500;
-    color: #302821;
+    color: #ffeedb;
 }
 .faq-question::after {
     content: "+";
@@ -149,10 +149,10 @@ ul, ol {
 .faq-answer {
     display: none;
     padding: 15px 20px;
-    background: #f9f6f1;
+    background: #776352;
     font-size: 1.2em;
     border-radius: 0 0 8px 8px;
-    color: #584e43;
+    color: #ffeedb;
     line-height: 1.5;
 }
 .faq-item.open .faq-answer {
